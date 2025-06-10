@@ -20,6 +20,7 @@ using namespace vex;
 // A global instance of competition
 competition Competition;
 
+
 // define your global instances of motors and other devices here
 
 /*---------------------------------------------------------------------------*/
@@ -89,7 +90,7 @@ void usercontrol(void) {
   while (true) {
     // ========== DRIVE CONTROL ========== //
     double fwd = Controller.Axis3.position();
-    double turn    = Controller.Axis4.position();
+    double turn = Controller.Axis4.position();
 
     double leftPower  = fwd + turn;
     double rightPower = fwd - turn;

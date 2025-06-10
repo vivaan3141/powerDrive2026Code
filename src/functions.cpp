@@ -17,6 +17,7 @@ void setDTPosition(double inches) {
     RB.setPosition(deg, degrees);
 }
 
+
 void spinDT(double velocity) {
     LF.spin(forward, velocity, percent);
     LM.spin(forward, velocity, percent);
@@ -26,6 +27,7 @@ void spinDT(double velocity) {
     RB.spin(forward, velocity, percent);
 }
 
+
 void stopDT() {
     LF.stop();
     LM.stop();
@@ -34,6 +36,7 @@ void stopDT() {
     RM.stop();
     RB.stop();
 }
+
 
 void spinRightDT(double velocity) {
     RF.spin(forward, velocity, percent);
