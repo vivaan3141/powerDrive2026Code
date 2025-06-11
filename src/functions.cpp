@@ -4,7 +4,7 @@
 using namespace vex;
 
 double inchesToDegrees(double inches) {
-  return (inches / (M_PI * 3.25)) * 360.0;
+  return (inches / (M_PI * 3.25)) * 360.0 * (5/3);
 }
 
 void setDTPosition(double inches) {
@@ -16,17 +16,6 @@ void setDTPosition(double inches) {
     RM.setPosition(deg, degrees);
     RB.setPosition(deg, degrees);
 }
-
-
-void spinDT(double velocity) {
-    LF.spin(forward, velocity, percent);
-    LM.spin(forward, velocity, percent);
-    LB.spin(forward, velocity, percent);
-    RF.spin(forward, velocity, percent);
-    RM.spin(forward, velocity, percent);
-    RB.spin(forward, velocity, percent);
-}
-
 
 void stopDT() {
     LF.stop();
@@ -48,4 +37,9 @@ void spinLeftDT(double velocity) {
     LF.spin(forward, velocity, percent);
     LM.spin(forward, velocity, percent);
     LB.spin(forward, velocity, percent);
+}
+
+void spinDT(double velocity) {
+    spinRightDT(velocity);
+    spinLeftDT(velocity);
 }

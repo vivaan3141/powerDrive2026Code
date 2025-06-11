@@ -90,7 +90,7 @@ void usercontrol(void) {
   while (true) {
     // ========== DRIVE CONTROL ========== //
     double fwd = Controller.Axis3.position();
-    double turn = Controller.Axis4.position();
+    double turn = Controller.Axis1.position();
 
     double leftPower  = fwd + turn;
     double rightPower = fwd - turn;
@@ -133,7 +133,7 @@ int main() {
   Competition.autonomous(autonomous);
   Competition.drivercontrol(usercontrol);
 
-  //Competition.test_auton();
+  Competition.test_auton();
   //Competition.test_driver();
 
   while (true) {
