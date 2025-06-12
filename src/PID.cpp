@@ -6,9 +6,10 @@
 using namespace vex;
 
 
-void drivePID(double targetInches, double kP = 0.001, double kI = 0, double kD = 0) {
+void drivePID(double targetInches, double kP = 0, double kI = 0, double kD = 0) {
 
   double targetDegrees = inchesToDegrees(targetInches);
+  //double targetDegrees = (targetInches / (M_PI * 3.25)) * 360.0 * (5/3);
 
   setDTPosition(0); //reset encoders
 
@@ -21,12 +22,14 @@ void drivePID(double targetInches, double kP = 0.001, double kI = 0, double kD =
 
   while (fabs(error) > 1.0) { //Keep running until you’re within 1° of your target
     double leftAvg = (LF.position(degrees) + LM.position(degrees) + LB.position(degrees)) / 3.0;
+    //double leftAvg = (LM.position(degrees) + LB.position(degrees)) / 2.0;
     double rightAvg = (RF.position(degrees) + RM.position(degrees) + RB.position(degrees)) / 3.0;
     double avgPos = (leftAvg + rightAvg) / 2.0;
 
     /*Controller.Screen.clearScreen();
     Controller.Screen.setCursor(1, 1);
-    Controller.Screen.print(leftAvg);*/
+    Controller.Screen.print(avgPos);*/
+
     error = targetDegrees - avgPos;
     integral += error;
 
@@ -43,13 +46,14 @@ void drivePID(double targetInches, double kP = 0.001, double kI = 0, double kD =
     if (power > 100) power = 100;
     if (power < -100) power = -100;
 
-    spinDT(power);
+    spinDT(power*0.5);
 
     task::sleep(20); // small loop delay
   }
 
   stopDT();
-
+  Controller.Screen.print("done");
+  Controller.Screen.print(targetDegrees);
 
 }
 
