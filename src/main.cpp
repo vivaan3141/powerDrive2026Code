@@ -132,7 +132,7 @@ int main() {
   Competition.autonomous(autonomous);
   Competition.drivercontrol(usercontrol);
 
-  Competition.test_auton();
+  //Competition.test_auton();
   //Competition.test_driver();
 
 
