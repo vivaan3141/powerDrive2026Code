@@ -6,7 +6,7 @@
 using namespace vex;
 
 
-void drivePID(double targetInches, double kP = 0, double kI = 0, double kD = 0) {
+void drivePID(double targetInches, double kP, double kI, double kD) {
 
   double targetDegrees = inchesToDegrees(targetInches);
 
