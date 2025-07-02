@@ -95,8 +95,8 @@ void usercontrol(void) {
     double leftPower  = fwd + turn;
     double rightPower = fwd - turn;
 
-    spinLeftDT(leftPower);
-    spinRightDT(rightPower);
+    spinLeftDT(leftPower * 0.7);
+    spinRightDT(rightPower * 0.7);
 
     // ========== ARM CONTROL ========== //
     if (Controller.ButtonA.pressing()) {
@@ -117,7 +117,6 @@ void usercontrol(void) {
       DoubleActingPiston.set(false); // open
     }
 
-    // Loop delay
     wait(20, msec);
   }
 }
@@ -133,8 +132,9 @@ int main() {
   Competition.autonomous(autonomous);
   Competition.drivercontrol(usercontrol);
 
-  Competition.test_auton();
+  //Competition.test_auton();
   //Competition.test_driver();
+
 
   while (true) {
     wait(100, msec);
