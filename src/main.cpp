@@ -73,7 +73,7 @@ void usercontrol(void) {
     if (Controller.ButtonL1.pressing()) {
       low.setVelocity(200, rpm);
       middle.setVelocity(200, rpm);
-      high.setVelocity(200, rpm);
+      high.setVelocity(400, rpm);
 
       low.spin(reverse);
       middle.spin(reverse);
@@ -86,7 +86,7 @@ void usercontrol(void) {
     if (Controller.ButtonR1.pressing()) {
       low.setVelocity(200, rpm);
       middle.setVelocity(200, rpm);
-      high.setVelocity(200, rpm);
+      high.setVelocity(400, rpm);
 
       low.spin(forward);
       middle.spin(forward);
@@ -95,8 +95,8 @@ void usercontrol(void) {
     } else if (Controller.ButtonR2.pressing()) {
       low.setVelocity(200, rpm);
       middle.setVelocity(200, rpm);
-      high.setVelocity(200, rpm);
-      
+      high.setVelocity(400, rpm);
+
       low.spin(forward);
       middle.spin(forward);
       high.spin(forward); // Score long, moves all stages

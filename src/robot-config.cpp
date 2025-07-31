@@ -26,9 +26,9 @@ vex::motor_group RightDrive(RF, RM, RB);
 // Drivetrain: wheel travel = 320mm, track width = 280mm, wheelbase = 300mm (adjust as needed)
 vex::drivetrain Drivetrain(LeftDrive, RightDrive);
 
-vex::motor low (vex::PORT6,vex::gearSetting::ratio6_1); //Intake low
-vex::motor high (vex::PORT7,vex::gearSetting::ratio6_1); //Intake high
-vex::motor middle (vex::PORT8,vex::gearSetting::ratio6_1,true); //Intake middle
+vex::motor low (vex::PORT6,vex::gearSetting::ratio18_1); //Intake low
+vex::motor high (vex::PORT7,vex::gearSetting::ratio18_1); //Intake high
+vex::motor middle (vex::PORT8,vex::gearSetting::ratio18_1); //Intake middle
 
 
 // vex::digital_out DoubleActingPiston (Brain.ThreeWirePort.A);
