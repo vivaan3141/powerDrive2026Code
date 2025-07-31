@@ -26,20 +26,20 @@ vex::motor_group RightDrive(RF, RM, RB);
 // Drivetrain: wheel travel = 320mm, track width = 280mm, wheelbase = 300mm (adjust as needed)
 vex::drivetrain Drivetrain(LeftDrive, RightDrive);
 
-vex::motor low (vex::PORT6,vex::gearSetting::ratio6_1,true); //Intake low
-vex::motor high (vex::PORT6,vex::gearSetting::ratio6_1,true); //Intake high
+vex::motor low (vex::PORT6,vex::gearSetting::ratio6_1); //Intake low
+vex::motor high (vex::PORT7,vex::gearSetting::ratio6_1); //Intake high
 vex::motor middle (vex::PORT8,vex::gearSetting::ratio6_1,true); //Intake middle
 
 
-vex::digital_out DoubleActingPiston (Brain.ThreeWirePort.A);
-vex::digital_out SingleActingPiston (Brain.ThreeWirePort.B);
+// vex::digital_out DoubleActingPiston (Brain.ThreeWirePort.A);
+// vex::digital_out SingleActingPiston (Brain.ThreeWirePort.B);
 
 vex::inertial InertialSensor(vex::PORT9);
 
 void vexcodeInit() {
   InertialSensor.calibrate();
-  DoubleActingPiston.set(false); // retracted
-  SingleActingPiston.set(false); // off
+  // DoubleActingPiston.set(false); // retracted
+  // SingleActingPiston.set(false); // off
   while (InertialSensor.isCalibrating()) {
     vex::task::sleep(100);
   }

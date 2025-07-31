@@ -1,10 +1,10 @@
-#include "robot-config.h"
-#include "vex.h"
+// #include "robot-config.h"
+// #include "vex.h"
 
-using namespace vex;
+// using namespace vex;
 
-void clamp() {
-  if (DoubleActingPiston.value() == 0) {
-    DoubleActingPiston.set(true);
-  }
-}
+// void clamp() {
+//   if (DoubleActingPiston.value() == 0) {
+//     DoubleActingPiston.set(true);
+//   }
+//}

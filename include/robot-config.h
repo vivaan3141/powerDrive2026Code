@@ -29,8 +29,8 @@ extern vex::motor middle;
 
 extern vex::inertial InertialSensor;
 
-extern vex::digital_out DoubleActingPiston;
-extern vex::digital_out SingleActingPiston;
+// extern vex::digital_out DoubleActingPiston;
+// extern vex::digital_out SingleActingPiston;
 
 void vexcodeInit();
 

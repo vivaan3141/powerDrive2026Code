@@ -71,19 +71,32 @@ void usercontrol(void) {
 
     // ========== CLAMP CONTROL ========== //
     if (Controller.ButtonL1.pressing()) {
+      low.setVelocity(200, rpm);
+      middle.setVelocity(200, rpm);
+      high.setVelocity(200, rpm);
+
       low.spin(reverse);
       middle.spin(reverse);
       high.spin(reverse); // descore all stages
-    
+      
+
     }
 
 
     if (Controller.ButtonR1.pressing()) {
+      low.setVelocity(200, rpm);
+      middle.setVelocity(200, rpm);
+      high.setVelocity(200, rpm);
+
       low.spin(forward);
       middle.spin(forward);
       high.spin(reverse); // Scores middle goal, moves low stage and medium stage in normal, and high stage in reverse for extra push
-
+      
     } else if (Controller.ButtonR2.pressing()) {
+      low.setVelocity(200, rpm);
+      middle.setVelocity(200, rpm);
+      high.setVelocity(200, rpm);
+      
       low.spin(forward);
       middle.spin(forward);
       high.spin(forward); // Score long, moves all stages
