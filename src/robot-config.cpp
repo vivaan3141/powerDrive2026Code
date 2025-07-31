@@ -27,8 +27,7 @@ vex::motor_group RightDrive(RF, RM, RB);
 vex::drivetrain Drivetrain(LeftDrive, RightDrive);
 
 vex::motor low (vex::PORT6,vex::gearSetting::ratio18_1); //Intake low
-vex::motor high (vex::PORT7,vex::gearSetting::ratio18_1); //Intake high
-vex::motor middle (vex::PORT8,vex::gearSetting::ratio18_1); //Intake middle
+vex::motor high (vex::PORT7,vex::gearSetting::ratio18_1, true); //Intake high
 
 
 // vex::digital_out DoubleActingPiston (Brain.ThreeWirePort.A);

@@ -73,13 +73,11 @@ void usercontrol(void) {
     // ========== Conveyor Control ========== //
     if (Controller.ButtonL1.pressing()) {
       low.setVelocity(200, rpm);
-      middle.setVelocity(200, rpm);
       high.setVelocity(400, rpm);
       Controller.Screen.print("REVERSE ALL");
 
 
       low.spin(reverse);
-      middle.spin(reverse);
       high.spin(reverse); // descore all stages
 
     }
@@ -87,28 +85,23 @@ void usercontrol(void) {
 
     if (Controller.ButtonR1.pressing()) {
       low.setVelocity(200, rpm);
-      middle.setVelocity(200, rpm);
       high.setVelocity(400, rpm);
 
       low.spin(forward);
-      middle.spin(forward);
       high.spin(reverse); // Scores middle goal, moves low stage and medium stage in normal, and high stage in reverse for extra push
       Controller.Screen.print("Middle Goal");
 
     } else if (Controller.ButtonR2.pressing()) {
       low.setVelocity(200, rpm);
-      middle.setVelocity(200, rpm);
       high.setVelocity(400, rpm);
 
       low.spin(forward);
-      middle.spin(forward);
       high.spin(forward); // Score long, moves all stages
       Controller.Screen.print("LONG GOAL");
 
        // intake  open
     }else{
       low.stop();
-      middle.stop();
       high.stop(); 
       Controller.Screen.print("DO SOMETHING");
 
