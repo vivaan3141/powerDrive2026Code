@@ -80,6 +80,16 @@ void usercontrol(void) {
       low.spin(reverse);
       high.spin(reverse); // descore all stages
 
+    }else if (Controller.ButtonL2.pressing()){
+      low.setVelocity(200, rpm);
+      high.setVelocity(400, rpm);
+      //storage.setVelocity 
+      Controller.Screen.print("REVERSE ALL");
+
+
+      low.spin(reverse);
+      high.spin(reverse); // descore all stages
+
     }
 
 
@@ -103,7 +113,7 @@ void usercontrol(void) {
     }else{
       low.stop();
       high.stop(); 
-      Controller.Screen.print("DO SOMETHING");
+      Controller.Screen.print("POWER-DRIVE:13707X!");
 
     }
 
