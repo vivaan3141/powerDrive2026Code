@@ -13,12 +13,12 @@ If it seems like some of your motors are running against eachother in the drivet
 vex::brain Brain;
 vex::controller Controller(vex::controllerType::primary);
 
-vex::motor LB(vex::PORT8, vex::gearSetting::ratio6_1, false); //Left Back Motor
-vex::motor LM(vex::PORT5, vex::gearSetting::ratio6_1, false); //Left Middle Motor
-vex::motor LF(vex::PORT4, vex::gearSetting::ratio6_1, false); //Left Front Motor
-vex::motor RB(vex::PORT3, vex::gearSetting::ratio6_1, true); //Right Back Motor
-vex::motor RM(vex::PORT2, vex::gearSetting::ratio6_1, true); //Right Middle Motor
-vex::motor RF(vex::PORT1, vex::gearSetting::ratio6_1, true); //Right Front Motor
+vex::motor LB(vex::PORT5, vex::gearSetting::ratio6_1, false); //Left Back Motor
+vex::motor LM(vex::PORT10, vex::gearSetting::ratio6_1, false); //Left Middle Motor
+vex::motor LF(vex::PORT21, vex::gearSetting::ratio6_1, false); //Left Front Motor
+vex::motor RB(vex::PORT4, vex::gearSetting::ratio6_1, true); //Right Back Motor
+vex::motor RM(vex::PORT3, vex::gearSetting::ratio6_1, true); //Right Middle Motor
+vex::motor RF(vex::PORT2, vex::gearSetting::ratio6_1, true); //Right Front Motor
 
 vex::motor_group LeftDrive(LF, LM, LB);
 vex::motor_group RightDrive(RF, RM, RB);
@@ -27,8 +27,8 @@ vex::motor_group RightDrive(RF, RM, RB);
 vex::drivetrain Drivetrain(LeftDrive, RightDrive);
 
 vex::motor low (vex::PORT6,vex::gearSetting::ratio6_1,true); //Intake low
-vex::motor high (vex::PORT7,vex::gearSetting::ratio6_1,true); //Intake high
-vex::motor middle (vex::PORT12,vex::gearSetting::ratio6_1,true); //Intake middle
+vex::motor high (vex::PORT6,vex::gearSetting::ratio6_1,true); //Intake high
+vex::motor middle (vex::PORT8,vex::gearSetting::ratio6_1,true); //Intake middle
 
 
 vex::digital_out DoubleActingPiston (Brain.ThreeWirePort.A);
