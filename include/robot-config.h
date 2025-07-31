@@ -22,8 +22,10 @@ extern vex::motor_group RightDrive;
 
 extern vex::drivetrain Drivetrain;
 
-extern vex::motor Arm1;
-extern vex::motor Arm2;
+extern vex::motor low;
+extern vex::motor high;
+extern vex::motor middle;
+
 
 extern vex::inertial InertialSensor;
 
