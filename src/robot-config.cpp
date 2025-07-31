@@ -28,7 +28,7 @@ vex::drivetrain Drivetrain(LeftDrive, RightDrive);
 
 vex::motor low (vex::PORT8,vex::gearSetting::ratio18_1); //Intake low
 vex::motor high (vex::PORT7,vex::gearSetting::ratio18_1, true); //Intake high
-//vex::motor storage (vex::?,vex::gearSetting::ratio18_1); //Bag storage
+vex::motor storage (vex::PORT11,vex::gearSetting::ratio18_1); //Bag storage
 
 
 // vex::digital_out DoubleActingPiston (Brain.ThreeWirePort.A);

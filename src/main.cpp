@@ -64,38 +64,38 @@ void usercontrol(void) {
     spinLeftDT(leftPower * 0.7);
     spinRightDT(rightPower * 0.7);
 
-    // if (Controller.ButtonA.pressing()) {
-      
-    // } else if (Controller.ButtonB.pressing()) {
-    // } else {
+    
       
 
     // ========== Conveyor Control ========== //
-    if (Controller.ButtonL1.pressing()) {
+    if (Controller.ButtonA.pressing()) { // Left side front buttons
       low.setVelocity(200, rpm);
-      high.setVelocity(400, rpm);
+      high.setVelocity(200, rpm);
       Controller.Screen.print("REVERSE ALL");
 
 
       low.spin(reverse);
       high.spin(reverse); // descore all stages
-
-    }else if (Controller.ButtonL2.pressing()){
+    }else if (Controller.ButtonL1.pressing()) {
       low.setVelocity(200, rpm);
-      high.setVelocity(400, rpm);
-      //storage.setVelocity 
-      Controller.Screen.print("REVERSE ALL");
+      high.setVelocity(200, rpm);
+      storage.setVelocity(200, rpm);
+      Controller.Screen.print("Placing in storage"); 
 
-
-      low.spin(reverse);
-      high.spin(reverse); // descore all stages
-
-    }
-
-
-    if (Controller.ButtonR1.pressing()) {
+      low.spin(forward);
+      storage.spin(forward);
+    
+    }else if (Controller.ButtonL2.pressing()) {
       low.setVelocity(200, rpm);
-      high.setVelocity(400, rpm);
+      high.setVelocity(200, rpm);
+      storage.setVelocity(200, rpm);
+      Controller.Screen.print("Taking out of storage"); 
+
+      storage.spin(reverse);
+    
+    }else if (Controller.ButtonR1.pressing()) { // left side front buttons
+      low.setVelocity(200, rpm);
+      high.setVelocity(200, rpm);
 
       low.spin(forward);
       high.spin(reverse); // Scores middle goal, moves low stage and medium stage in normal, and high stage in reverse for extra push
@@ -103,7 +103,7 @@ void usercontrol(void) {
 
     } else if (Controller.ButtonR2.pressing()) {
       low.setVelocity(200, rpm);
-      high.setVelocity(400, rpm);
+      high.setVelocity(200, rpm);
 
       low.spin(forward);
       high.spin(forward); // Score long, moves all stages

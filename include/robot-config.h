@@ -24,6 +24,8 @@ extern vex::drivetrain Drivetrain;
 
 extern vex::motor low;
 extern vex::motor high;
+extern vex::motor storage;
+
 
 
 extern vex::inertial InertialSensor;
