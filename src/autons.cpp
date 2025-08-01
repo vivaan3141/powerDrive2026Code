@@ -24,7 +24,7 @@ low.setVelocity(200, rpm);
   low.spin(forward);
   storage.spin(forward);
   
-  drivePID(25,0.3,0,0);
+  drivePID(30,0.3,0,0);
   wait(0.5, sec);
 
   drivePID(2,0.3,0,0.1);
@@ -32,11 +32,10 @@ low.setVelocity(200, rpm);
 
   wait(1, sec);
 
-  drivePID(-2,0.3,0.1,0.1);
 
 //Move to goal
-  turnPID(-45,1,1,1);
-  drivePID(8,0.3,0.1,0.1);
+  turnPID(-45,0.48,0,0);
+  drivePID(8,0.3,0,0);
 //Score blocks
   storage.spin(reverse);
   high.spin(reverse);
