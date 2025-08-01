@@ -8,20 +8,45 @@ using namespace vex;
 
 
 void rightAuton() {
-  spinDTPosition(100, 24);
-  turnForTime(100, 300);
+  low.setVelocity(200, rpm);
+  high.setVelocity(200, rpm);
+  storage.setVelocity(200, rpm);
+//Make turns intertial
+  drivePID(8,1,1,1);
+  turnPID(90, 2, 0, 0);
+  drivePID(15,1,1,1);
+//Storage
+  Controller.Screen.print("Placing in storage"); 
+  low.spin(forward);
+  storage.spin(forward);
+  drivePID(2,1,1,1);
+
+  wait(1, sec);
+//Move to goal
+  turnPID(45,1,1,1);
+  drivePID(8,1,1,1);
+//Score blocks
+  storage.spin(reverse);
+  high.spin(reverse);
+  low.spin(forward);
+  wait(1, sec);
+//Move a bit back
+  drivePID(-1,1,1,1);
+  storage.stop();
+  low.stop();
+  high.stop();
+
+  
+
+
+
+
+
+
 }
 
 void leftAuton() {
   turnPID(90, 2, 0, 0);
 }
 
-void skillsAuton() {
-  drivePID(10, 0.24, 0.00012, 0.04); 
-  //wait(234, msec);
-  turnPID(-61, 0.456789, 0.00002 ,0.15); 
-  drivePID(14.6, 0.24, 0.00012, 0.04); 
-  drivePID(-9, 0.24, 0.00012, 0.04); 
-  turnPID(105, 0.456789, 0.00002 ,0.15);
-  drivePID(23, 0.24, 0.00012, 0.04); 
-}
+
