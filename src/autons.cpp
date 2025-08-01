@@ -10,13 +10,6 @@ using namespace vex;
 void rightAuton() {
   
 
-  
-
-
-
-
-
-
 }
 
 void leftAuton() {
