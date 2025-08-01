@@ -46,7 +46,6 @@ void autonomous(void) {
 
 }
 
-
 void usercontrol(void) {
 
   while (true) {
@@ -65,13 +64,13 @@ void usercontrol(void) {
       
 
     // ========== Conveyor Control Major!!!!! ========== //
-    if (Controller.ButtonB.pressing()) { // Left side front buttons
+    if (Controller.ButtonA.pressing()) { // Left side front buttons
       low.setVelocity(200, rpm);
       high.setVelocity(200, rpm);
       storage.setVelocity(200, rpm);
-      Controller.Screen.print("REVERSE ALL");
+      Controller.Screen.print("REVERSE ");
       low.spin(reverse);
-      high.spin(reverse); // descore all stages
+      high.spin(forward); // descore all stages
 
     }else if (Controller.ButtonL1.pressing()) {
       low.setVelocity(200, rpm);

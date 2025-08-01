@@ -8,12 +8,24 @@ using namespace vex;
 
 
 void rightAuton() {
+  
+
+  
+
+
+
+
+
+
+}
+
+void leftAuton() {
   low.setVelocity(200, rpm);
   high.setVelocity(200, rpm);
   storage.setVelocity(200, rpm);
-//Make turns intertial
+//Make turns 
   drivePID(8,1,1,1);
-  turnPID(90, 2, 0, 0);
+  turnPID(90, 1, 1, 1);
   drivePID(15,1,1,1);
 //Storage
   Controller.Screen.print("Placing in storage"); 
@@ -43,9 +55,9 @@ void rightAuton() {
   storage.spin(forward);
   drivePID(2,1,1,1);
   wait(1, sec);
-  
+
 //Turn and move to goal
-  turnPID(100,1,1,1);
+  turnPID(-135,1,1,1);
   drivePID(8,1,1,1);
 
 //Score low goal
@@ -58,18 +70,6 @@ void rightAuton() {
   storage.stop();
   low.stop();
   high.stop();
-
-  
-
-
-
-
-
-
-}
-
-void leftAuton() {
-  turnPID(90, 2, 0, 0);
 }
 
 
