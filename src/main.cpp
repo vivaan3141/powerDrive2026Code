@@ -30,20 +30,20 @@ void pre_auton(void) {
 
 void autonomous(void) {
   
-  // switch (getSelectedAuton()) {
-  //   case 0:
-  //     rightAuton();
-  //     break;
-  //   case 1:
-  //     leftAuton();
-  //     break;
-  //   case 2:
-  //     skillsAuton();
-  //     break;
-  //   default:
-  //     Brain.Screen.print("No valid auton selected!");
-  //     break;
-  // }
+  switch (getSelectedAuton()) {
+    case 0:
+      rightAuton();
+      break;
+    case 1:
+      leftAuton();
+      break;
+    case 2:
+      skillsAuton();
+      break;
+    default:
+      Brain.Screen.print("No valid auton selected!");
+      break;
+  }
  
 
 
@@ -74,7 +74,7 @@ void usercontrol(void) {
       Controller.Screen.print("REVERSE ALL");
       low.spin(reverse);
       high.spin(reverse); // descore all stages
-      
+
     }else if (Controller.ButtonL1.pressing()) {
       low.setVelocity(200, rpm);
       high.setVelocity(200, rpm);
