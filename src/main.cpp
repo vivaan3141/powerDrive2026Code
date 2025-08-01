@@ -74,6 +74,7 @@ void usercontrol(void) {
       Controller.Screen.print("REVERSE ALL");
       low.spin(reverse);
       high.spin(reverse); // descore all stages
+      storage.spin(reverse);
 
     }else if (Controller.ButtonL1.pressing()) {
       low.setVelocity(200, rpm);
