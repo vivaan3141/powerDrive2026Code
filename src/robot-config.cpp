@@ -26,6 +26,7 @@ vex::motor_group RightDrive(RF, RM, RB);
 // Drivetrain: wheel travel = 320mm, track width = 280mm, wheelbase = 300mm (adjust as needed)
 vex::drivetrain Drivetrain(LeftDrive, RightDrive);
 
+
 vex::motor low (vex::PORT8,vex::gearSetting::ratio18_1); //Intake low
 vex::motor high (vex::PORT7,vex::gearSetting::ratio18_1, true); //Intake high
 vex::motor storage (vex::PORT11,vex::gearSetting::ratio18_1); //Bag storage
@@ -34,7 +35,7 @@ vex::motor storage (vex::PORT11,vex::gearSetting::ratio18_1); //Bag storage
 // vex::digital_out DoubleActingPiston (Brain.ThreeWirePort.A);
 // vex::digital_out SingleActingPiston (Brain.ThreeWirePort.B);
 
-vex::inertial InertialSensor(vex::PORT9);
+vex::inertial InertialSensor(vex::PORT16);
 
 void vexcodeInit() {
   InertialSensor.calibrate();

@@ -25,6 +25,15 @@ void pre_auton(void) {
 
   vexcodeInit();
   displayAutonSelector();
+  // Start calibration.
+InertialSensor.calibrate();
+// Print that the Inertial Sensor is calibrating while
+// waiting for it to finish calibrating.
+while(InertialSensor.isCalibrating()){
+    Brain.Screen.print("Inertial Calibrating");
+    wait(5, sec);
+}
+
   
 }
 
