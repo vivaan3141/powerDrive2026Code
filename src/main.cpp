@@ -59,7 +59,7 @@ void autonomous(void) {
 }
 
 void reverseIntake(){
-  low.spin(forward);
+  low.spin(reverse);
 }
 
 void intakeStorage(){
