@@ -12,7 +12,6 @@
 #include "PID.h"
 #include "autons.h"
 #include "auton-selector.h"
-#include "arm.h"
 #include "functions.h"
 
 using namespace vex;
