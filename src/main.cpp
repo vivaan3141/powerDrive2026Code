@@ -29,9 +29,13 @@ void pre_auton(void) {
 InertialSensor.calibrate();
 // Print that the Inertial Sensor is calibrating while
 // waiting for it to finish calibrating.
+low.setVelocity(200, rpm);
+high.setVelocity(200, rpm);
 while(InertialSensor.isCalibrating()){
     Brain.Screen.print("Inertial Calibrating");
     wait(5, sec);
+    
+
 }
 
   
@@ -55,7 +59,71 @@ void autonomous(void) {
 
 }
 
+void reverseIntake(){
+  low.spin(forward);
+}
+
+void intakeStorage(){
+  Controller.Screen.print("Placing in storage"); 
+  low.spin(forward);
+  storage.spin(forward);
+}
+
+void storageOut(){
+  Controller.Screen.print("Taking out of storage"); 
+  storage.spin(reverse);
+}
+void middleGoal(){
+  low.spin(forward);
+  high.spin(forward);
+  Controller.Screen.print("Middle Goal");
+}
+void longGoal(){
+  high.spin(reverse); // Score long, moves all stages
+  Controller.Screen.print("LONG GOAL");
+}
+
+// All released button functions
+
+
+void reverseIntakeRELEASED(){
+  low.stop();
+}
+
+void intakeStorageRELEASED(){ 
+  low.stop();
+  storage.stop();
+}
+
+void storageOutRELEASED(){
+  storage.stop();
+}
+void middleGoalRELEASED(){
+  low.stop();
+  high.stop();
+
+}
+void longGoalRELEASED(){
+  high.stop();
+}
+
+
+
 void usercontrol(void) {
+
+    Controller.ButtonA.pressed(reverseIntake);
+    Controller.ButtonL1.pressed(intakeStorage);
+    Controller.ButtonL2.pressed(storageOut);
+    Controller.ButtonR1.pressed(middleGoal);
+    Controller.ButtonR2.pressed(longGoal);
+
+    Controller.ButtonA.released(reverseIntakeRELEASED);
+    Controller.ButtonL1.released(intakeStorageRELEASED);
+    Controller.ButtonL2.released(storageOutRELEASED);
+    Controller.ButtonR1.released(middleGoalRELEASED);
+    Controller.ButtonR2.released(longGoalRELEASED);
+
+  
 
   while (true) {
     // ========== DRIVE CONTROL ========== //
@@ -69,15 +137,21 @@ void usercontrol(void) {
     spinLeftDT(leftPower * 0.7);
     spinRightDT(rightPower * 0.7);
 
-    
-      
+    // low.setVelocity(200, rpm);
 
-    // ========== Conveyor Control Major!!!!! ========== //
+    
+    
+
+
+
+      // DO individual programming for  Intake, High, and Storage.
+      
+/*
+    // ========== Button Controls ========== //
     if (Controller.ButtonA.pressing()) { // Left side front buttons
       low.setVelocity(200, rpm);
       high.setVelocity(200, rpm);
-      storage.setVelocity(200, rpm);
-      Controller.Screen.print("REVERSE ");
+      Controller.Screen.print("REVERSE! ");
       low.spin(reverse);
       high.spin(forward); // descore all stages
 
@@ -103,15 +177,12 @@ void usercontrol(void) {
       high.setVelocity(200, rpm);
 
       low.spin(forward);
-      high.spin(reverse); // Scores middle goal, moves low stage and medium stage in normal, and high stage in reverse for extra push
       Controller.Screen.print("Middle Goal");
 
     } else if (Controller.ButtonR2.pressing()) {
-      low.setVelocity(200, rpm);
       high.setVelocity(200, rpm);
 
-      low.spin(forward);
-      high.spin(forward); // Score long, moves all stages
+      high.spin(reverse); // Score long, moves all stages
       Controller.Screen.print("LONG GOAL");
 
        // intake  open
@@ -121,7 +192,7 @@ void usercontrol(void) {
       Controller.Screen.print("POWER-DRIVE:13707X!");
 
     }
-
+*/
     wait(20, msec);
   }
 }

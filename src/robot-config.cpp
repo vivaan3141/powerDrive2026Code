@@ -23,7 +23,6 @@ vex::motor RF(vex::PORT2, vex::gearSetting::ratio6_1, false); //Right Front Moto
 vex::motor_group LeftDrive(LF, LM, LB);
 vex::motor_group RightDrive(RF, RM, RB);
 
-// Drivetrain: wheel travel = 320mm, track width = 280mm, wheelbase = 300mm (adjust as needed)
 vex::drivetrain Drivetrain(LeftDrive, RightDrive);
 
 
