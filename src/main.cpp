@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------------*/
 /*                                                                            */
 /*    Module:       main.cpp                                                  */
-/*    Author:       katherinezeng                                             */
+/*    Author:       Vivaan Gupta                                              */
 /*    Created:      5/27/2025, 10:30:19 PM                                    */
 /*    Description:  V5 project                                                */
 /*                                                                            */
@@ -79,6 +79,8 @@ void middleGoal(){
 }
 void longGoal(){
   high.spin(forward); // Score long, moves all stages
+  low.spin(forward);
+
   Controller.Screen.print("LONG GOAL");
 }
 
@@ -206,6 +208,11 @@ int main(){
 
   //Competition.test_auton();
   //Competition.test_driver();
+  high.setVelocity(200, rpm);
+  low.setVelocity(200, rpm);
+  storage.setVelocity(200, rpm);
+
+
 
 
   while (true) {
