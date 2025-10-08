@@ -74,11 +74,11 @@ void storageOut(){
 }
 void middleGoal(){
   low.spin(forward);
-  high.spin(forward);
+  high.spin(reverse);
   Controller.Screen.print("Middle Goal");
 }
 void longGoal(){
-  high.spin(reverse); // Score long, moves all stages
+  high.spin(forward); // Score long, moves all stages
   Controller.Screen.print("LONG GOAL");
 }
 
