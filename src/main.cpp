@@ -33,6 +33,8 @@ high.setVelocity(200, rpm);
 while(InertialSensor.isCalibrating()){
     Brain.Screen.print("Inertial Calibrating");
     wait(5, sec);
+
+  
     
 
 }
@@ -111,6 +113,9 @@ void longGoalRELEASED(){
 
 
 void usercontrol(void) {
+  high.setVelocity(200, rpm);
+  low.setVelocity(200, rpm);
+  storage.setVelocity(200, rpm);
 
     Controller.ButtonA.pressed(reverseIntake);
     Controller.ButtonL1.pressed(intakeStorage);
@@ -202,15 +207,14 @@ void usercontrol(void) {
 int main(){
 
   pre_auton();
+  
 
   Competition.autonomous(autonomous);
   Competition.drivercontrol(usercontrol);
 
   //Competition.test_auton();
   //Competition.test_driver();
-  high.setVelocity(200, rpm);
-  low.setVelocity(200, rpm);
-  storage.setVelocity(200, rpm);
+  
 
 
 
