@@ -43,22 +43,9 @@ while(InertialSensor.isCalibrating()){
 }
 
 void autonomous(void) {
-  
-  switch (getSelectedAuton()) {
-    case 0:
-      rightAuton();
-      break;
-    case 1:
-      leftAuton();
-      break;
-    default:
-      Brain.Screen.print("No valid auton selected!");
-      break;
-  }
- 
-
-
+  Auton();
 }
+ 
 
 void reverseIntake(){
   low.spin(reverse);
@@ -108,6 +95,7 @@ void middleGoalRELEASED(){
 }
 void longGoalRELEASED(){
   high.stop();
+  low.stop();
 }
 
 
