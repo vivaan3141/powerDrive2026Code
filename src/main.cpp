@@ -11,6 +11,7 @@
 #include "robot-config.h"
 #include "PID.h"
 #include "autons.h"
+#include "autons.cpp"
 #include "auton-selector.h"
 #include "functions.h"
 
@@ -42,8 +43,8 @@ while(InertialSensor.isCalibrating()){
   
 }
 
-void autonomous(void) {
-  Auton();
+void autonomous() {
+  auton(1);
 }
  
 
