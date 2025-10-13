@@ -36,7 +36,7 @@ void autonCodes(int x) {
     
     wait(0.5, sec);
 
-    drivePID(15,0.3,0.05,0.1);
+    drivePID(10,0.3,0.05,0.1);
 
     wait(0.5, sec);
 
@@ -47,7 +47,7 @@ void autonCodes(int x) {
     high.stop();
     storage.stop();
     low.stop();
-    drivePID(-15,0.3,0.05,0.1);
+    drivePID(-10,0.3,0.05,0.1);
     turnPID(-90, 0.5,0.05,0.1);
     drivePID(60,0.3,0.05,0.1);
     turnPID(45, 0.5,0.05,0.1);
@@ -58,7 +58,7 @@ void autonCodes(int x) {
     low.spin(reverse);
 
   } else if (x==2){
-    Drivetrain.setDriveVelocity(60, percent);
+    Drivetrain.setDriveVelocity(20, percent);
     low.setVelocity(200, rpm);
     high.setVelocity(200, rpm);
     storage.setVelocity(200, rpm);
@@ -68,12 +68,12 @@ void autonCodes(int x) {
     storage.spin(forward);
     low.spin(reverse);
     //Make turns 
-    drivePID(36,0.3,0.05,0.1);
+    drivePID(33,0.3,0.05,0.1);
     turnPID(45, 0.5,0.05,0.1);
     
     wait(0.5, sec);
 
-    drivePID(15,0.3,0.05,0.1);
+    drivePID(10,0.3,0.05,0.1);
 
     wait(0.5, sec);
 

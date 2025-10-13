@@ -1,5 +1,6 @@
 // src/robot-config.cpp
 #include "robot-config.h"
+using namespace vex;
 
 //Configuration!
 
@@ -23,8 +24,9 @@ vex::motor RF(vex::PORT2, vex::gearSetting::ratio6_1, false); //Right Front Moto
 vex::motor_group LeftDrive(LF, LM, LB);
 vex::motor_group RightDrive(RF, RM, RB);
 
-vex::drivetrain Drivetrain(LeftDrive, RightDrive);
+vex::inertial InertialSensor(vex::PORT15);
 
+vex::smartdrive Smartdrive = smartdrive(LeftDrive, RightDrive, InertialSensor, 279.5, 311.5, 254, mm, 0.6);
 
 vex::motor low (vex::PORT8,vex::gearSetting::ratio18_1); //Intake low
 vex::motor high (vex::PORT7,vex::gearSetting::ratio18_1, true); //Intake high
@@ -34,7 +36,6 @@ vex::motor storage (vex::PORT11,vex::gearSetting::ratio18_1); //Bag storage
 // vex::digital_out DoubleActingPiston (Brain.ThreeWirePort.A);
 // vex::digital_out SingleActingPiston (Brain.ThreeWirePort.B);
 
-vex::inertial InertialSensor(vex::PORT15);
 
 void vexcodeInit() {
   InertialSensor.calibrate();
