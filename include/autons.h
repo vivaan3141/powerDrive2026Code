@@ -7,8 +7,6 @@
 // test comment
 
 //Autons//
-void rightAuton();
-void leftAuton();
-void skillsAuton();
+
 
 #endif //end of define

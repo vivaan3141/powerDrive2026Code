@@ -34,7 +34,7 @@ vex::motor storage (vex::PORT11,vex::gearSetting::ratio18_1); //Bag storage
 // vex::digital_out DoubleActingPiston (Brain.ThreeWirePort.A);
 // vex::digital_out SingleActingPiston (Brain.ThreeWirePort.B);
 
-vex::inertial InertialSensor(vex::PORT16);
+vex::inertial InertialSensor(vex::PORT15);
 
 void vexcodeInit() {
   InertialSensor.calibrate();
