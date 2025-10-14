@@ -20,7 +20,7 @@ extern vex::motor RF;
 extern vex::motor_group LeftDrive;
 extern vex::motor_group RightDrive;
 
-extern vex::drivetrain Drivetrain;
+extern vex::smartdrive Drivetrain;
 
 extern vex::motor low;
 extern vex::motor high;

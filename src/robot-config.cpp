@@ -26,7 +26,7 @@ vex::motor_group RightDrive(RF, RM, RB);
 
 vex::inertial InertialSensor(vex::PORT15);
 
-vex::smartdrive Smartdrive = smartdrive(LeftDrive, RightDrive, InertialSensor, 279.5, 311.5, 254, mm, 0.6);
+vex::smartdrive Drivetrain = smartdrive(LeftDrive, RightDrive, InertialSensor, 279.5, 311.5, 254, mm, 0.6);
 
 vex::motor low (vex::PORT8,vex::gearSetting::ratio18_1); //Intake low
 vex::motor high (vex::PORT7,vex::gearSetting::ratio18_1, true); //Intake high
