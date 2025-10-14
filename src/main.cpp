@@ -31,7 +31,7 @@ void autonCodes(int x) {
     storage.spin(forward);
     low.spin(reverse);
     //Make turns 
-    drivePID(36,0.3,0.05,0.1);
+    drivePID(32,0.3,0.05,0.1);
     turnPID(-45, 0.5,0.05,0.1);
     
     wait(0.5, sec);
