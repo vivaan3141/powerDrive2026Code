@@ -21,6 +21,9 @@ competition Competition;
 
 void autonCodes(int x) {
   if (x==1){
+    // Auton Port 1
+    //Scores 1 block on Middle goal and faces optimal position
+    // Setup
     Drivetrain.setDriveVelocity(40, percent);
     low.setVelocity(200, rpm);
     high.setVelocity(200, rpm);
@@ -51,14 +54,14 @@ void autonCodes(int x) {
     
 
   } else if (x==2){
+    // Auton Port 2
+    //Scores 1 block on Low goal and faces optimal position
+    // Setup: 
     Drivetrain.setDriveVelocity(20, percent);
     low.setVelocity(200, rpm);
     high.setVelocity(200, rpm);
     storage.setVelocity(200, rpm);
 
-    low.setVelocity(200, rpm);
-    high.setVelocity(200, rpm);
-    storage.setVelocity(200, rpm);
 
     drivePID(2,0.3,0.05,0.1);
     turnPID(90, 0.48,0,0);
@@ -69,7 +72,7 @@ void autonCodes(int x) {
     
     wait(1, sec);
 
-    drivePID(11.5,0.3,0.05,0.1);
+    drivePID(12.5,0.3,0.05,0.1);
 
     wait(0.5, sec);
 
@@ -83,9 +86,9 @@ void autonCodes(int x) {
     // drivePID(-15,0.3,0.05,0.1);
     // turnPID(45, 0.5,0.05,0.1);
   } else if (x==3){
-    //
-  }else if (x==4){
-    //Skills Autonfx
+    // Skills Auton Port 3
+    //Scores 1 block on long goal and parks
+    //Setup:
     Drivetrain.setDriveVelocity(60, percent);
     low.setVelocity(200, rpm);
     high.setVelocity(200, rpm);
@@ -115,10 +118,155 @@ void autonCodes(int x) {
     drivePID(-18,0.3,0.05,0.1);
     wait(0.5, sec);
     drivePID(-8,0.3,0.05,0.1);
+  }else if (x==4){
+    // Auton Port 4
+    //Scores 4 block on Middle goal and faces optimal position
+    // Setup
+    Drivetrain.setDriveVelocity(40, percent);
+    low.setVelocity(200, rpm);
+    high.setVelocity(200, rpm);
+    storage.setVelocity(200, rpm);
+
+    drivePID(3,0.3,0.05,0.1);
+    turnPID(-90, 0.48,0,0);
+    low.spin(forward);
+    storage.spin(forward);
+
+    //Make turns 
+    drivePID(31.5,0.3,0.05,0.1);
+    turnPID(-45, 0.5,0.05,0.1);
+    
+    wait(1, sec);
+
+    drivePID(10,0.3,0.05,0.1);
+
+    wait(0.5, sec);
+
+    high.spin(reverse);
+    storage.spin(reverse);
+    low.spin(forward);
+    wait(2, sec);
+    high.stop();
+    storage.stop();
+    low.stop();
+    drivePID(-15,0.3,0.05,0.1);
+    turnPID(45, 0.5,0.05,0.1);
+  }else if(x==5){
+    // Auton Port 5
+    //Scores 4 block on Low goal and faces optimal position
+    // Setup: 
+    Drivetrain.setDriveVelocity(20, percent);
+    low.setVelocity(200, rpm);
+    high.setVelocity(200, rpm);
+    storage.setVelocity(200, rpm);
 
 
+    drivePID(2,0.3,0.05,0.1);
+    turnPID(90, 0.48,0,0);
+    low.spin(forward);
+    storage.spin(forward);
+    //Make turns 
+    drivePID(31.5,0.3,0.05,0.1);
+    turnPID(45, 0.5,0.05,0.1);
+    
+    wait(1, sec);
+
+    drivePID(11.5,0.3,0.05,0.1);
+
+    wait(0.5, sec);
+
+    high.spin(reverse);
+    storage.spin(reverse);
+    low.spin(reverse);
+    wait(2, sec);
+    high.stop();
+    storage.stop();
+    low.stop();
+    // drivePID(-15,0.3,0.05,0.1);
+    // turnPID(45, 0.5,0.05,0.1);
+  }else if (x==6){
+    //Skills Auton Port 6
+    //Scores _ pts.
+    //Setup:
+    Drivetrain.setDriveVelocity(40, percent);
+    low.setVelocity(200, rpm);
+    high.setVelocity(200, rpm);
+    storage.setVelocity(200, rpm);
+
+    drivePID(3,0.3,0.05,0.1);
+    turnPID(-90, 0.48,0,0);
+    low.spin(reverse);
+    storage.spin(forward);
+
+    //Make turns 
+    drivePID(31.5,0.3,0.05,0.1);
+    turnPID(-45, 0.5,0.05,0.1);
+    
+    wait(1, sec);
+
+    drivePID(10,0.3,0.05,0.1);
+
+    wait(0.5, sec);
+
+    high.spin(reverse);
+    storage.spin(reverse);
+    low.spin(forward);
+    wait(2, sec);
+    high.stop();
+    storage.stop();
+    low.stop();
+
+    drivePID(-15,0.3,0.05,0.1);
+    turnPID(45, 0.5,0.05,0.1);
+    drivePID(50,0.3,0.05,0.1);
+    
+    low.spin(reverse);
+    storage.spin(forward);
+    wait(2, sec);
+    storage.stop();
+    low.stop();
+
+    turnPID(-135, 0.5,0.05,0.1);
+    drivePID(10,0.3,0.05,0.1);
+    
+    high.spin(reverse);
+    storage.spin(reverse);
+    low.spin(reverse);
+
+    wait(2, sec);
+
+    high.stop();
+    storage.stop();
+    low.stop();
+    drivePID(-10,0.3,0.05,0.1);
+    turnPID(45, 0.5,0.05,0.1);
+    drivePID(50,0.3,0.05,0.1);
+
+    high.spin(reverse);
+    storage.spin(reverse);
+    low.spin(forward);
+    
+    wait(2, sec);
+
+    high.stop();
+    storage.stop();
+    low.stop();
+
+    turnPID(-45, 0.5,0.05,0.1);
+    turnPID(-90, 0.5,0.05,0.1);
+
+    drivePID(20,0.3,0.05,0.1);
+
+     high.spin(forward);
+    storage.spin(reverse);
+    low.spin(forward);
+    wait(3, sec);
+    high.stop();
+    storage.stop();
+    low.stop();
 
 
+    
 
     
   }
@@ -146,7 +294,7 @@ while(InertialSensor.isCalibrating()){
 }
 
 void autonomous() {
-  autonCodes(4);
+  autonCodes(6);
 }
  
 
