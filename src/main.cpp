@@ -33,12 +33,12 @@ void autonCodes(int x) {
     turnPID(-90, 0.48,0,0);
     low.spin(reverse);
     //Make turns 
-    drivePID(31.5,0.3,0.05,0.1);
+    drivePID(30,0.3,0.05,0.1);
     turnPID(-45, 0.5,0.05,0.1);
     
     wait(1, sec);
 
-    drivePID(10,0.3,0.05,0.1);
+    drivePID(14,0.3,0.05,0.1);
 
     wait(0.5, sec);
 
@@ -49,8 +49,8 @@ void autonCodes(int x) {
     high.stop();
     storage.stop();
     low.stop();
-    drivePID(-15,0.3,0.05,0.1);
-    turnPID(45, 0.5,0.05,0.1);
+    // drivePID(-15,0.3,0.05,0.1);
+    // turnPID(45, 0.5,0.05,0.1);
     
 
   } else if (x==2){
@@ -111,13 +111,16 @@ void autonCodes(int x) {
     high.stop();
     storage.stop();
     low.stop();
-    drivePID(-12,0.3,0.05,0.1);
+
+    drivePID(-10,0.3,0.05,0.1);
     turnPID(90, 0.5,0.05,0.1);
-    drivePID(-45,0.3,0.05,0.1);
+    drivePID(-47,0.3,0.05,0.1);
     turnPID(-90, 0.5,0.05,0.1);
-    drivePID(-18,0.3,0.05,0.1);
+
+    drivePID(-20,0.3,0.05,0.1);
     wait(0.5, sec);
-    drivePID(-8,0.3,0.05,0.1);
+    drivePID(1,0.3,0.05,0.1);
+    drivePID(-3,0.3,0.05,0.1);
   }else if (x==4){
     // Auton Port 4
     //Scores 4 block on Middle goal and faces optimal position
@@ -133,12 +136,15 @@ void autonCodes(int x) {
     storage.spin(forward);
 
     //Make turns 
-    drivePID(31.5,0.3,0.05,0.1);
+    drivePID(32,0.3,0.05,0.1);
     turnPID(-45, 0.5,0.05,0.1);
     
     wait(1, sec);
 
-    drivePID(10,0.3,0.05,0.1);
+    drivePID(14.5,0.3,0.05,0.1);
+    drivePID(-1,0.3,0.05,0.1);
+    drivePID(1,0.3,0.05,0.1);
+
 
     wait(0.5, sec);
 
@@ -149,8 +155,8 @@ void autonCodes(int x) {
     high.stop();
     storage.stop();
     low.stop();
-    drivePID(-15,0.3,0.05,0.1);
-    turnPID(45, 0.5,0.05,0.1);
+    // drivePID(-15,0.3,0.05,0.1);
+    // turnPID(45, 0.5,0.05,0.1);
   }else if(x==5){
     // Auton Port 5
     //Scores 4 block on Low goal and faces optimal position
@@ -294,7 +300,7 @@ while(InertialSensor.isCalibrating()){
 }
 
 void autonomous() {
-  autonCodes(6);
+  autonCodes(4);
 }
  
 
