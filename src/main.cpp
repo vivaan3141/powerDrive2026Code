@@ -38,7 +38,7 @@ void autonCodes(int x) {
     
     wait(1, sec);
 
-    drivePID(14,0.3,0.05,0.1);
+    drivePID(13,0.3,0.05,0.1);
 
     wait(0.5, sec);
 
@@ -68,7 +68,7 @@ void autonCodes(int x) {
     low.spin(reverse);
     //Make turns 
     drivePID(32,0.3,0.05,0.1);
-    turnPID(39, 0.5,0.05,0.1);
+    turnPID(38, 0.5,0.05,0.1);
     
     wait(1, sec);
 
@@ -119,8 +119,8 @@ void autonCodes(int x) {
 
     drivePID(-20,0.3,0.05,0.1);
     wait(0.5, sec);
-    drivePID(1,0.3,0.05,0.1);
-    drivePID(-3,0.3,0.05,0.1);
+    // drivePID(1,0.3,0.05,0.1);
+    // drivePID(-3,0.3,0.05,0.1);
   }else if (x==4){
 
 
@@ -196,38 +196,14 @@ void autonCodes(int x) {
     // // drivePID(-15,0.3,0.05,0.1);
     // // turnPID(45, 0.5,0.05,0.1);
   }else if(x==5){
-    // Auton Port 5
-    //Scores 4 block on Low goal and faces optimal position
-    // Setup: 
+    // Solo AWP All.2
     Drivetrain.setDriveVelocity(20, percent);
     low.setVelocity(200, rpm);
     high.setVelocity(200, rpm);
     storage.setVelocity(200, rpm);
+    drivePID(4,0.1,0.00,0.0);
+    Drivetrain.setDriveVelocity(100, percent);
 
-
-    drivePID(2,0.3,0.05,0.1);
-    turnPID(90, 0.48,0,0);
-    low.spin(forward);
-    storage.spin(forward);
-    //Make turns 
-    drivePID(31.5,0.3,0.05,0.1);
-    turnPID(45, 0.5,0.05,0.1);
-    
-    wait(1, sec);
-
-    drivePID(11.5,0.3,0.05,0.1);
-
-    wait(0.5, sec);
-
-    high.spin(reverse);
-    storage.spin(reverse);
-    low.spin(reverse);
-    wait(2, sec);
-    high.stop();
-    storage.stop();
-    low.stop();
-    // drivePID(-15,0.3,0.05,0.1);
-    // turnPID(45, 0.5,0.05,0.1);
   }else if (x==6){
     Drivetrain.setDriveVelocity(60, percent);
     low.setVelocity(200, rpm);
@@ -252,7 +228,6 @@ void autonCodes(int x) {
     storage.stop();
     low.stop();
 
-    drivePID(-1,0.3,0.05,0.1);
     
     
   }
@@ -280,7 +255,7 @@ while(InertialSensor.isCalibrating()){
 }
 
 void autonomous() {
-  autonCodes(6);
+  autonCodes(5);
 }
  
 
