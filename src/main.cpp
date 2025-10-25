@@ -229,79 +229,22 @@ void autonCodes(int x) {
     // drivePID(-15,0.3,0.05,0.1);
     // turnPID(45, 0.5,0.05,0.1);
   }else if (x==6){
-    //Skills Auton Port 6
-    //Scores _ pts.
-    //Setup:
-    Drivetrain.setDriveVelocity(40, percent);
+    Drivetrain.setDriveVelocity(60, percent);
     low.setVelocity(200, rpm);
     high.setVelocity(200, rpm);
     storage.setVelocity(200, rpm);
 
-    drivePID(3,0.3,0.05,0.1);
+    drivePID(30,0.3,0.05,0.1);
     turnPID(-90, 0.48,0,0);
-    low.spin(reverse);
-    storage.spin(forward);
-
-    //Make turns 
-    drivePID(31.5,0.3,0.05,0.1);
-    turnPID(-45, 0.5,0.05,0.1);
     
+    //Make turns 
     wait(1, sec);
 
-    drivePID(10,0.3,0.05,0.1);
+    drivePID(23,0.3,0.05,0.1);
 
     wait(0.5, sec);
 
-    high.spin(reverse);
-    storage.spin(reverse);
-    low.spin(forward);
-    wait(2, sec);
-    high.stop();
-    storage.stop();
-    low.stop();
-
-    drivePID(-15,0.3,0.05,0.1);
-    turnPID(45, 0.5,0.05,0.1);
-    drivePID(50,0.3,0.05,0.1);
-    
-    low.spin(reverse);
-    storage.spin(forward);
-    wait(2, sec);
-    storage.stop();
-    low.stop();
-
-    turnPID(-135, 0.5,0.05,0.1);
-    drivePID(10,0.3,0.05,0.1);
-    
-    high.spin(reverse);
-    storage.spin(reverse);
-    low.spin(reverse);
-
-    wait(2, sec);
-
-    high.stop();
-    storage.stop();
-    low.stop();
-    drivePID(-10,0.3,0.05,0.1);
-    turnPID(45, 0.5,0.05,0.1);
-    drivePID(50,0.3,0.05,0.1);
-
-    high.spin(reverse);
-    storage.spin(reverse);
-    low.spin(forward);
-    
-    wait(2, sec);
-
-    high.stop();
-    storage.stop();
-    low.stop();
-
-    turnPID(-45, 0.5,0.05,0.1);
-    turnPID(-90, 0.5,0.05,0.1);
-
-    drivePID(20,0.3,0.05,0.1);
-
-     high.spin(forward);
+    high.spin(forward);
     storage.spin(reverse);
     low.spin(forward);
     wait(3, sec);
@@ -309,9 +252,8 @@ void autonCodes(int x) {
     storage.stop();
     low.stop();
 
-
+    drivePID(-1,0.3,0.05,0.1);
     
-
     
   }
 }
@@ -338,7 +280,7 @@ while(InertialSensor.isCalibrating()){
 }
 
 void autonomous() {
-  autonCodes(2);
+  autonCodes(6);
 }
  
 
