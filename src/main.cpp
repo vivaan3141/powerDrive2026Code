@@ -67,12 +67,12 @@ void autonCodes(int x) {
     turnPID(90, 0.48,0,0);
     low.spin(reverse);
     //Make turns 
-    drivePID(31,0.3,0.05,0.1);
-    turnPID(46, 0.5,0.05,0.1);
+    drivePID(32,0.3,0.05,0.1);
+    turnPID(39, 0.5,0.05,0.1);
     
     wait(1, sec);
 
-    drivePID(13,0.3,0.05,0.1);
+    drivePID(14.2,0.3,0.05,0.1);
 
     wait(0.5, sec);
 
