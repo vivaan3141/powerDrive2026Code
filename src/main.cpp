@@ -21,43 +21,48 @@ competition Competition;
 
 void autonCodes(int x) {
   if (x==1){
-      //drivePID(48,0.25,0.05,-0.1);
-      Drivetrain.turnToHeading(90,degrees);
+    
 
     // Auton Port 1
-    //Scores 1 block on Middle goal and faces optimal position
+    // Scores 1 block on Middle goal and faces optimal position
     // Setup
-    // Drivetrain.setDriveVelocity(40, percent);
-    // low.setVelocity(200, rpm);
-    // high.setVelocity(200, rpm);
-    // storage.setVelocity(200, rpm);
+    low.setVelocity(200, rpm);
+    high.setVelocity(200, rpm);
+    storage.setVelocity(200, rpm);
 
-    // drivePID(4,0.3,0.05,0.1);
-    // turnPID(-90, 0.48,0,0);
-    // low.spin(reverse);
-    // //Make turns 
-    // drivePID(32,0.3,0.05,0.1);
-    // turnPID(-40, 0.5,0.05,0.1);
+    drivePID(9,0.1,0.05,-0.1);
+    Drivetrain.turnToHeading(90,degrees);
+    low.spin(forward);
+    storage.spin(forward);
+
+    //Make turns 
+    //drivePID(30.5,0.1,0.05,-0.1);
+    Drivetrain.setDriveVelocity(10, percent);
+    Drivetrain.driveFor(32.5,inches);
+    Drivetrain.turnToHeading(130,degrees);
     
-    // wait(1, sec);
+    wait(1, sec);
+    Drivetrain.setDriveVelocity(10, percent);
 
-    // drivePID(13,0.3,0.05,0.1);
+    Drivetrain.driveFor(15,inches);
+    wait(0.5, sec);
 
-    // wait(0.5, sec);
-
-    // high.spin(reverse);
-    // storage.spin(reverse);
-    // low.spin(forward);
-    // wait(2, sec);
-    // high.stop();
-    // storage.stop();
-    // low.stop();
-    // // drivePID(-15,0.3,0.05,0.1);
-    // // turnPID(45, 0.5,0.05,0.1);
+    high.spin(reverse);
+    storage.spin(reverse);
+    low.spin(forward);
+    wait(5, sec);
+    high.stop();
+    storage.stop();
+    low.stop();
+    // drivePID(-15,0.3,0.05,0.1);
+    // turnPID(45, 0.5,0.05,0.1);
     
 
   } else if (x==2){
-    drivePID(48,0.5,0,0);
+    drivePID(48,0.1,0.05,-0.1);
+    Controller.Screen.print("Placing in storage"); 
+
+
     // Auton Port 2
     //Scores 1 block on Low goal and faces optimal position
     // Setup: 

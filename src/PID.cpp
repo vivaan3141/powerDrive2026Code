@@ -4,13 +4,15 @@
 #include "functions.h"
 
 using namespace vex;
-
+#include <iostream>
 
 void drivePID(double targetInches, double kP, double kI, double kD) {
+  std::cout<<"==========================================";
 
   double targetDegrees = inchesToDegrees(targetInches);
 
   setDTPosition(0); //reset encoders
+  long counter=0;
 
   double error = targetDegrees;
   double integral = 0;
@@ -23,7 +25,7 @@ void drivePID(double targetInches, double kP, double kI, double kD) {
     double leftAvg = (LF.position(degrees) + LM.position(degrees) + LB.position(degrees)) / 3.0;
     double rightAvg = (RF.position(degrees) + RM.position(degrees) + RB.position(degrees)) / 3.0;
     double avgPos = (leftAvg + rightAvg) / 2.0;
-
+    counter++;
     error = targetDegrees - avgPos;
     integral += error;
 
@@ -35,11 +37,13 @@ void drivePID(double targetInches, double kP, double kI, double kD) {
     lastError = error;
 
     double power = (kP * error) + (kI * integral) + (kD * derivative);
-
+     if (counter%5 == 1){
+      std::cout<<"\n power"<<power;
+    }
     // Clamp output
     if (power > 100) power = 100;
     if (power < -100) power = -100;
-
+   
     spinDT(power*0.5);
 
     task::sleep(20); // small loop delay
