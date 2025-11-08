@@ -12,7 +12,7 @@ void drivePID(double targetInches, double kP, double kI, double kD) {
   double targetDegrees = inchesToDegrees(targetInches);
 
   setDTPosition(0); //reset encoders
-  long counter=0;
+  long long counter = 0;
 
   double error = targetDegrees;
   double integral = 0;
