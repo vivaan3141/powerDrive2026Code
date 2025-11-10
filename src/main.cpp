@@ -132,87 +132,74 @@ void autonCodes(int x) {
     // drivePID(-3,0.3,0.05,0.1);
   }else if (x==4){
 
-
-    // Auton Port 4
-    //Scores 4 block on Middle goal and faces optimal position
-    // Setup
-    Drivetrain.setDriveVelocity(40, percent);
+    Drivetrain.setDriveVelocity(60, percent);
     low.setVelocity(200, rpm);
     high.setVelocity(200, rpm);
     storage.setVelocity(200, rpm);
 
-    drivePID(5,0.3,0.05,0.1);
-    turnPID(-90, 0.48,0,0);
-    
-
-    //Make turns 
-    drivePID(7,0.3,0.05,0.1);
-    turnPID(-45, 0.5,0.05,0.1);
-    
-    wait(1, sec);
-
     drivePID(30,0.3,0.05,0.1);
-    turnPID(128, 0.5,0.05,0.1);
+    Drivetrain.turnToHeading(-90, degrees);
+    Loader.set(true);
+
+    drivePID(2,0.3,0.05,0.1);
+    wait(1, sec);
     low.spin(forward);
     storage.spin(forward);
-    drivePID(24,0.3,0.05,0.1);
-    turnPID(-45, 0.5,0.05,0.1);
-    drivePID(14,0.3,0.05,0.1);
+    wait(3, sec);
+    low.stop();
+    storage.stop();
 
-    wait(0.5, sec);
+    drivePID(-24,0.3,0.05,0.1);
+    Drivetrain.turnToHeading(-90, degrees);
+    drivePID(20,0.3,0.05,0.1);
 
-    high.spin(reverse);
+    high.spin(forward);
     storage.spin(reverse);
     low.spin(forward);
-    wait(2, sec);
+    wait(3, sec);
+    high.stop();
+    storage.stop();
+    low.stop();
+
+    // GO to long Goal  
+    drivePID(-10,0.3,0.05,0.1);
+    Drivetrain.turnToHeading(-180, degrees);
+    drivePID(96.7,0.3,0.05,0.1);
+    Drivetrain.turnToHeading(90, degrees);
+    drivePID(20,0.3,0.05,0.1);
+
+    Loader.set(true);
+
+    drivePID(2,0.3,0.05,0.1);
+    wait(1, sec);
+    low.spin(forward);
+    storage.spin(forward);
+    wait(3, sec);
+    low.stop();
+    storage.stop();
+
+    drivePID(-24,0.3,0.05,0.1);
+    wait(0.5, sec);
+
+    Drivetrain.turnToHeading(-90, degrees);
+    drivePID(20,0.3,0.05,0.1);
+
+    high.spin(forward);
+    storage.spin(reverse);
+    low.spin(forward);
+    wait(3, sec);
     high.stop();
     storage.stop();
     low.stop();
     
-    // // Auton Port 4
-    // //Scores 4 block on Middle goal and faces optimal position
-    // // Setup
-    // Drivetrain.setDriveVelocity(40, percent);
-    // low.setVelocity(200, rpm);
-    // high.setVelocity(200, rpm);
-    // storage.setVelocity(200, rpm);
-
-    // drivePID(3,0.3,0.05,0.1);
-    // turnPID(-90, 0.48,0,0);
-    // low.spin(forward);
-    // storage.spin(forward);
-
-    // //Make turns 
-    // drivePID(32,0.3,0.05,0.1);
-    // turnPID(-45, 0.5,0.05,0.1);
-    
-    // wait(1, sec);
-
-    // drivePID(14.5,0.3,0.05,0.1);
-    // drivePID(-1,0.3,0.05,0.1);
-    // drivePID(1,0.3,0.05,0.1);
-
-
-    // wait(0.5, sec);
-
-    // high.spin(reverse);
-    // storage.spin(reverse);
-    // low.spin(forward);
-    // wait(2, sec);
-    // high.stop();
-    // storage.stop();
-    // low.stop();
-    // // drivePID(-15,0.3,0.05,0.1);
-    // // turnPID(45, 0.5,0.05,0.1);
   }else if(x==5){
-    // Solo AWP All.2
-    Drivetrain.setDriveVelocity(20, percent);
+    Drivetrain.setDriveVelocity(60, percent);
     low.setVelocity(200, rpm);
     high.setVelocity(200, rpm);
     storage.setVelocity(200, rpm);
-    drivePID(4,0.1,0.00,0.0);
-    Drivetrain.setDriveVelocity(100, percent);
 
+    drivePID(30,0.3,0.05,0.1);
+    turnPID(-90, 0.48,0,0);
   }else if (x==6){
     Drivetrain.setDriveVelocity(60, percent);
     low.setVelocity(200, rpm);
@@ -291,6 +278,13 @@ void longGoal(){
 
   Controller.Screen.print("LONG GOAL");
 }
+void loadOut(){
+  Controller.Screen.print("Loading"); 
+  Loader.set(true);
+}
+void loadRest(){
+  Loader.set(false);
+}
 
 // All released button functions
 
@@ -351,21 +345,14 @@ void usercontrol(void) {
     Controller.ButtonL2.pressed(storageOut);
     Controller.ButtonR1.pressed(middleGoal);
     Controller.ButtonR2.pressed(longGoal);
-
     
-
-
     Controller.ButtonA.released(reverseIntakeRELEASED);
     Controller.ButtonL1.released(intakeStorageRELEASED);
     Controller.ButtonL2.released(storageOutRELEASED);
     
     //Tune Pid
-    Controller.ButtonB.pressed(pida);
-    Controller.ButtonY.pressed(pidb);
-
-
-
-    
+    Controller.ButtonX.pressed(loadOut);
+    Controller.ButtonB.released(loadRest);
 
   while (true) {
     // ========== DRIVE CONTROL ========== //

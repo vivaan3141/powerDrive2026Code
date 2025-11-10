@@ -33,8 +33,7 @@ vex::motor high (vex::PORT7,vex::gearSetting::ratio18_1, true); //Intake high
 vex::motor storage (vex::PORT11,vex::gearSetting::ratio18_1); //Bag storage
 
 
-// vex::digital_out DoubleActingPiston (Brain.ThreeWirePort.A);
-// vex::digital_out SingleActingPiston (Brain.ThreeWirePort.B);
+vex::digital_out Loader (Brain.ThreeWirePort.A);
 
 
 void vexcodeInit() {
