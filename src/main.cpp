@@ -148,6 +148,8 @@ void autonCodes(int x) {
     wait(3, sec);
     low.stop();
     storage.stop();
+    
+    Loader.set(false);
 
     drivePID(-24,0.3,0.05,0.1);
     Drivetrain.turnToHeading(-90, degrees);
@@ -180,6 +182,7 @@ void autonCodes(int x) {
 
     drivePID(-24,0.3,0.05,0.1);
     wait(0.5, sec);
+    Loader.set(false);
 
     Drivetrain.turnToHeading(-90, degrees);
     drivePID(20,0.3,0.05,0.1);
@@ -192,6 +195,9 @@ void autonCodes(int x) {
     storage.stop();
     low.stop();
     
+    drivePID(-10,0.3,0.05,0.1);
+
+
   }else if(x==5){
     Drivetrain.setDriveVelocity(60, percent);
     low.setVelocity(200, rpm);
