@@ -18,11 +18,23 @@ using namespace vex;
 
 // A global instance of competition
 competition Competition;
+void skillsLoad(){
+  Loader.set(true);
+    drivePID(2,0.3,0.05,0.1);
+    wait(1, sec);
+    low.spin(forward);
+    storage.spin(forward);
+    wait(3, sec);
+    low.stop();
+    storage.stop();
 
+    Loader.set(false);
+
+    drivePID(-24,0.3,0.05,0.1);
+}
 void autonCodes(int x) {
   if (x==1){
-    
-
+      Loader.set(true);
     // Auton Port 1
     // Scores 1 block on Middle goal and faces optimal position
     // Setup
@@ -30,7 +42,7 @@ void autonCodes(int x) {
     high.setVelocity(200, rpm);
     storage.setVelocity(200, rpm);
 
-    drivePID(9,0.1,0.05,-0.1);
+    drivePID(7,0.1,0.05,-0.1);
     Drivetrain.turnToHeading(90,degrees);
     low.spin(forward);
     storage.spin(forward);
@@ -38,13 +50,13 @@ void autonCodes(int x) {
     //Make turns 
     //drivePID(30.5,0.1,0.05,-0.1);
     Drivetrain.setDriveVelocity(10, percent);
-    Drivetrain.driveFor(32.5,inches);
+    Drivetrain.driveFor(31,inches);
     Drivetrain.turnToHeading(130,degrees);
     
     wait(1, sec);
     Drivetrain.setDriveVelocity(10, percent);
 
-    Drivetrain.driveFor(15,inches);
+    Drivetrain.driveFor(17,inches);
     wait(0.5, sec);
 
     high.spin(reverse);
@@ -59,41 +71,33 @@ void autonCodes(int x) {
     
 
   } else if (x==2){
-    drivePID(48,0.1,0.05,-0.1);
-    Controller.Screen.print("Placing in storage"); 
+    // Low Goal Match
+    low.setVelocity(200, rpm);
+    high.setVelocity(200, rpm);
+    storage.setVelocity(200, rpm);
 
+    drivePID(9,0.1,0.05,-0.1);
+    Drivetrain.turnToHeading(-90,degrees);
+    low.spin(forward);
+    storage.spin(forward);
 
-    // Auton Port 2
-    //Scores 1 block on Low goal and faces optimal position
-    // Setup: 
-    // Drivetrain.setDriveVelocity(20, percent);
-    // low.setVelocity(200, rpm);
-    // high.setVelocity(200, rpm);
-    // storage.setVelocity(200, rpm);
+    Drivetrain.setDriveVelocity(10, percent);
+    Drivetrain.driveFor(32.5,inches);
+    Drivetrain.turnToHeading(-130,degrees);
 
+    Drivetrain.setDriveVelocity(10, percent);
 
-    // drivePID(4,0.3,0.05,0.1);
-    // turnPID(90, 0.48,0,0);
-    // low.spin(reverse);
-    // //Make turns 
-    // drivePID(32,0.3,0.05,0.1);
-    // turnPID(38, 0.5,0.05,0.1);
+    Drivetrain.driveFor(15,inches);
+    wait(0.5, sec);
+
+    high.spin(reverse);
+    storage.spin(reverse);
+    low.spin(reverse);
+    wait(5, sec);
+    high.stop();
+    storage.stop();
+    low.stop();
     
-    // wait(1, sec);
-
-    // drivePID(14.2,0.3,0.05,0.1);
-
-    // wait(0.5, sec);
-
-    // high.spin(reverse);
-    // storage.spin(reverse);
-    // low.spin(reverse);
-    // wait(2, sec);
-    // high.stop();
-    // storage.stop();
-    // low.stop();
-    // // drivePID(-15,0.3,0.05,0.1);
-    // // turnPID(45, 0.5,0.05,0.1);
   } else if (x==3){
     // Skills Auton Port 3
     //Scores 1 block on long goal and parks
@@ -131,30 +135,35 @@ void autonCodes(int x) {
     // drivePID(1,0.3,0.05,0.1);
     // drivePID(-3,0.3,0.05,0.1);
   }else if (x==4){
-
+    //50pt+ Skills
+    Loader.set(false);
     Drivetrain.setDriveVelocity(60, percent);
     low.setVelocity(200, rpm);
     high.setVelocity(200, rpm);
     storage.setVelocity(200, rpm);
 
-    drivePID(30,0.3,0.05,0.1);
+    drivePID(32,0.3,0.05,0.1);
     Drivetrain.turnToHeading(-90, degrees);
     Loader.set(true);
-
-    drivePID(2,0.3,0.05,0.1);
-    wait(1, sec);
-    low.spin(forward);
-    storage.spin(forward);
-    wait(3, sec);
-    low.stop();
-    storage.stop();
+    drivePID(16,0.3,0.05,0.1);
     
+    storage.spin(forward);
+    low.spin(forward);
+    drivePID(-2,0.3,0.05,0.1);
+    drivePID(2,0.3,0.05,0.1);
+    wait(3, sec);
+    storage.stop();
+    low.stop();
+
+    drivePID(-10,0.3,0.05,0.1);
     Loader.set(false);
 
-    drivePID(-24,0.3,0.05,0.1);
+    // GO to long Goal  1
+    drivePID(-10,0.3,0.05,0.1);
     Drivetrain.turnToHeading(-90, degrees);
-    drivePID(20,0.3,0.05,0.1);
-
+    drivePID(15,0.3,0.05,0.1);
+    
+  
     high.spin(forward);
     storage.spin(reverse);
     low.spin(forward);
@@ -162,27 +171,11 @@ void autonCodes(int x) {
     high.stop();
     storage.stop();
     low.stop();
+    skillsLoad();
 
-    // GO to long Goal  
     drivePID(-10,0.3,0.05,0.1);
-    Drivetrain.turnToHeading(-180, degrees);
-    drivePID(96.7,0.3,0.05,0.1);
-    Drivetrain.turnToHeading(90, degrees);
+    Drivetrain.turnToHeading(-135, degrees);
     drivePID(20,0.3,0.05,0.1);
-
-    Loader.set(true);
-
-    drivePID(2,0.3,0.05,0.1);
-    wait(1, sec);
-    low.spin(forward);
-    storage.spin(forward);
-    wait(3, sec);
-    low.stop();
-    storage.stop();
-
-    drivePID(-24,0.3,0.05,0.1);
-    wait(0.5, sec);
-    Loader.set(false);
 
     Drivetrain.turnToHeading(-90, degrees);
     drivePID(20,0.3,0.05,0.1);
@@ -195,8 +188,14 @@ void autonCodes(int x) {
     storage.stop();
     low.stop();
     
+    // Goes to Long goal 3
     drivePID(-10,0.3,0.05,0.1);
-
+    Drivetrain.turnToHeading(-135, degrees);
+    drivePID(80,0.3,0.05,0.1);
+    Drivetrain.turnToHeading(0, degrees);
+    Drivetrain.turnToHeading(-90, degrees);
+    drivePID(10,0.3,0.05,0.1);
+    skillsLoad();
 
   }else if(x==5){
     Drivetrain.setDriveVelocity(60, percent);
@@ -234,7 +233,7 @@ void autonCodes(int x) {
 
 
 void pre_auton(void) {
-
+  Loader.set(true);
   vexcodeInit();
   displayAutonSelector();
   // Start calibration.
@@ -250,7 +249,6 @@ while(InertialSensor.isCalibrating()){
 
 }
 
-  
 }
 
 void autonomous() {
@@ -261,6 +259,8 @@ void autonomous() {
 
 void reverseIntake(){
   low.spin(reverse);
+  high.spin(reverse);
+
 }
 
 void intakeStorage(){
@@ -287,9 +287,12 @@ void longGoal(){
 void loadOut(){
   Controller.Screen.print("Loading"); 
   Loader.set(true);
+  
+
 }
 void loadRest(){
   Loader.set(false);
+  
 }
 
 // All released button functions
@@ -297,7 +300,11 @@ void loadRest(){
 
 void reverseIntakeRELEASED(){
   low.stop();
+  high.stop();
+
 }
+
+
 
 
     
@@ -318,6 +325,7 @@ void reverseIntakeRELEASED(){
 void intakeStorageRELEASED(){ 
   low.stop();
   storage.stop();
+  high.stop();
 }
 
 void storageOutRELEASED(){
@@ -333,12 +341,12 @@ void longGoalRELEASED(){
   low.stop();
 }
 
-void pida(){
-  drivePID(24,0,0,0);
-}
-
-void pidb(){
-  drivePID(48,0,0,0);
+void load(){
+  if (loadRest){
+    loadOut();
+  }else if (loadOut){
+    loadRest();
+  }
 }
 
 void usercontrol(void) {
@@ -346,19 +354,18 @@ void usercontrol(void) {
   low.setVelocity(200, rpm);
   storage.setVelocity(200, rpm);
 
-    Controller.ButtonA.pressed(reverseIntake);
-    Controller.ButtonL1.pressed(intakeStorage);
-    Controller.ButtonL2.pressed(storageOut);
-    Controller.ButtonR1.pressed(middleGoal);
-    Controller.ButtonR2.pressed(longGoal);
+  Controller.ButtonA.pressed(reverseIntake);
+  Controller.ButtonL1.pressed(intakeStorage);
+  Controller.ButtonL2.pressed(storageOut);
+  Controller.ButtonR1.pressed(middleGoal);
+  Controller.ButtonR2.pressed(longGoal);
     
-    Controller.ButtonA.released(reverseIntakeRELEASED);
-    Controller.ButtonL1.released(intakeStorageRELEASED);
-    Controller.ButtonL2.released(storageOutRELEASED);
+  Controller.ButtonA.released(reverseIntakeRELEASED);
+  Controller.ButtonL1.released(intakeStorageRELEASED);
+  Controller.ButtonL2.released(storageOutRELEASED);
+  Controller.ButtonUp.pressed(load);
+  
     
-    //Tune Pid
-    Controller.ButtonX.pressed(loadOut);
-    Controller.ButtonB.released(loadRest);
 
   while (true) {
     // ========== DRIVE CONTROL ========== //
@@ -373,62 +380,7 @@ void usercontrol(void) {
     spinLeftDT(leftPower * 0.7);
     spinRightDT(rightPower * 0.7);
 
-    // low.setVelocity(200, rpm);
-
-    
-    
-
-
-
-      // DO individual programming for  Intake, High, and Storage.
-      
-/*
-    // ========== Button Controls ========== //
-    if (Controller.ButtonA.pressing()) { // Left side front buttons
-      low.setVelocity(200, rpm);
-      high.setVelocity(200, rpm);
-      Controller.Screen.print("REVERSE! ");
-      low.spin(reverse);
-      high.spin(forward); // descore all stages
-
-    }else if (Controller.ButtonL1.pressing()) {
-      low.setVelocity(200, rpm);
-      high.setVelocity(200, rpm);
-      storage.setVelocity(200, rpm);
-      Controller.Screen.print("Placing in storage"); 
-
-      low.spin(forward);
-      storage.spin(forward);
-    
-    }else if (Controller.ButtonL2.pressing()) {
-      low.setVelocity(200, rpm);
-      high.setVelocity(200, rpm);
-      storage.setVelocity(200, rpm);
-      Controller.Screen.print("Taking out of storage"); 
-
-      storage.spin(reverse);
-    
-    }else if (Controller.ButtonR1.pressing()) { // left side front buttons
-      low.setVelocity(200, rpm);
-      high.setVelocity(200, rpm);
-
-      low.spin(forward);
-      Controller.Screen.print("Middle Goal");
-
-    } else if (Controller.ButtonR2.pressing()) {
-      high.setVelocity(200, rpm);
-
-      high.spin(reverse); // Score long, moves all stages
-      Controller.Screen.print("LONG GOAL");
-
-       // intake  open
-    }else{
-      low.stop();
-      high.stop(); 
-      Controller.Screen.print("POWER-DRIVE:13707X!");
-
-    }
-*/
+  
     wait(20, msec);
   }
 }
@@ -437,11 +389,11 @@ void usercontrol(void) {
 int main(){
 
   pre_auton();
-  
+  Loader.set(true);
 
   Competition.autonomous(autonomous);
   Competition.drivercontrol(usercontrol);
-
+  
   //Competition.test_auton();
   //Competition.test_driver();
   
