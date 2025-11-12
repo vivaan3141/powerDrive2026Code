@@ -19,20 +19,7 @@ using namespace vex;
 
 // A global instance of competition
 competition Competition;
-void skillsLoad(){
-  Loader.set(true);
-    drivePID(2,0.3,0.05,0.1);
-    wait(1, sec);
-    low.spin(forward);
-    storage.spin(forward);
-    wait(3, sec);
-    low.stop();
-    storage.stop();
 
-    Loader.set(false);
-
-    drivePID(-24,0.3,0.05,0.1);
-}
 void autonCodes(int x) {
   if (x==1){
       Loader.set(true);
@@ -76,6 +63,7 @@ void autonCodes(int x) {
     low.setVelocity(200, rpm);
     high.setVelocity(200, rpm);
     storage.setVelocity(200, rpm);
+    Drivetrain.setVelocity(80, percent);
 
     drivePID(7,0.1,0.05,-0.1);
     Drivetrain.turnToHeading(-90,degrees);
@@ -87,10 +75,9 @@ void autonCodes(int x) {
     Drivetrain.turnToHeading(-130,degrees);
 
     Drivetrain.setDriveVelocity(10, percent);
-
+    Drivetrain.setVelocity(80, percent);
     Drivetrain.driveFor(17,inches);
     wait(0.5, sec);
-    low.setVelocity(150, rpm);
     high.spin(reverse);
     storage.spin(reverse);
     low.spin(reverse);
