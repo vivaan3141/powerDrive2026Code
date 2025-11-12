@@ -371,9 +371,12 @@ void usercontrol(void) {
   Controller.ButtonA.released(reverseIntakeRELEASED);
   Controller.ButtonL1.released(intakeStorageRELEASED);
   Controller.ButtonL2.released(storageOutRELEASED);
+  
+  
+
+// Pneumatics
   Controller.ButtonUp.pressed(loadOut);
   Controller.ButtonDown.pressed(loadRest);
-
 
   
     
