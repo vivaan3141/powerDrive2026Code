@@ -1,6 +1,7 @@
 // src/robot-config.cpp
 #include "robot-config.h"
 using namespace vex;
+#include <iostream>
 
 //Configuration!
 
@@ -42,5 +43,6 @@ void vexcodeInit() {
   // SingleActingPiston.set(false); // off
   while (InertialSensor.isCalibrating()) {
     vex::task::sleep(100);
+    std::cout<<"Calibrate";
   }
 }

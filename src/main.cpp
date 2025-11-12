@@ -76,20 +76,20 @@ void autonCodes(int x) {
     high.setVelocity(200, rpm);
     storage.setVelocity(200, rpm);
 
-    drivePID(9,0.1,0.05,-0.1);
+    drivePID(7,0.1,0.05,-0.1);
     Drivetrain.turnToHeading(-90,degrees);
     low.spin(forward);
     storage.spin(forward);
 
     Drivetrain.setDriveVelocity(10, percent);
-    Drivetrain.driveFor(32.5,inches);
+    Drivetrain.driveFor(31,inches);
     Drivetrain.turnToHeading(-130,degrees);
 
     Drivetrain.setDriveVelocity(10, percent);
 
-    Drivetrain.driveFor(15,inches);
+    Drivetrain.driveFor(17,inches);
     wait(0.5, sec);
-
+    low.setVelocity(150, rpm);
     high.spin(reverse);
     storage.spin(reverse);
     low.spin(reverse);
@@ -97,7 +97,7 @@ void autonCodes(int x) {
     high.stop();
     storage.stop();
     low.stop();
-    
+    low.setVelocity(200, rpm);
   } else if (x==3){
     // Skills Auton Port 3
     //Scores 1 block on long goal and parks
@@ -136,18 +136,22 @@ void autonCodes(int x) {
     // drivePID(-3,0.3,0.05,0.1);
   }else if (x==4){
     //50pt+ Skills
-    Loader.set(false);
+    Loader.set(true);
     Drivetrain.setDriveVelocity(60, percent);
     low.setVelocity(200, rpm);
     high.setVelocity(200, rpm);
     storage.setVelocity(200, rpm);
-
-    drivePID(32,0.3,0.05,0.1);
+//Goes to Loader 1
+    drivePID(27.5,0.1,0.05,0.1);
     Drivetrain.turnToHeading(-90, degrees);
-    Loader.set(true);
-    drivePID(16,0.3,0.05,0.1);
-    
+    drivePID(-5,0.1,0.05,0.1);
+    wait(1, sec);
+    Loader.set(false);
     storage.spin(forward);
+    Drivetrain.setDriveVelocity(30, percent);
+    drivePID(15,0.1,0.05,0.1);
+
+//Takes out
     low.spin(forward);
     drivePID(-2,0.3,0.05,0.1);
     drivePID(2,0.3,0.05,0.1);
@@ -156,14 +160,14 @@ void autonCodes(int x) {
     low.stop();
 
     drivePID(-10,0.3,0.05,0.1);
-    Loader.set(false);
+    Loader.set(true);
 
     // GO to long Goal  1
     drivePID(-10,0.3,0.05,0.1);
-    Drivetrain.turnToHeading(-90, degrees);
+    Drivetrain.turnToHeading(90, degrees);
     drivePID(15,0.3,0.05,0.1);
     
-  
+  //Scores in goal 1
     high.spin(forward);
     storage.spin(reverse);
     low.spin(forward);
@@ -171,11 +175,10 @@ void autonCodes(int x) {
     high.stop();
     storage.stop();
     low.stop();
-    skillsLoad();
 
     drivePID(-10,0.3,0.05,0.1);
-    Drivetrain.turnToHeading(-135, degrees);
-    drivePID(20,0.3,0.05,0.1);
+    Drivetrain.turnToHeading(180, degrees);
+    drivePID(100,0.3,0.05,0.1);
 
     Drivetrain.turnToHeading(-90, degrees);
     drivePID(20,0.3,0.05,0.1);
@@ -195,7 +198,6 @@ void autonCodes(int x) {
     Drivetrain.turnToHeading(0, degrees);
     Drivetrain.turnToHeading(-90, degrees);
     drivePID(10,0.3,0.05,0.1);
-    skillsLoad();
 
   }else if(x==5){
     Drivetrain.setDriveVelocity(60, percent);
@@ -245,15 +247,11 @@ high.setVelocity(200, rpm);
 while(InertialSensor.isCalibrating()){
     Brain.Screen.print("Inertial Calibrating");
     wait(5, sec);
-
-
 }
-
 }
-
 void autonomous() {
   Drivetrain.setStopping(hold);
-  autonCodes(1);
+  autonCodes(4);
 }
  
 
