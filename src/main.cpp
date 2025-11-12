@@ -13,6 +13,7 @@
 #include "autons.cpp"
 #include "auton-selector.h"
 #include "functions.h"
+#include <iostream>
 
 using namespace vex;
 
@@ -142,28 +143,34 @@ void autonCodes(int x) {
     high.setVelocity(200, rpm);
     storage.setVelocity(200, rpm);
 //Goes to Loader 1
-    drivePID(27.5,0.1,0.05,0.1);
+    drivePID(28,0.1,0.05,0.1);
     Drivetrain.turnToHeading(-90, degrees);
-    drivePID(-5,0.1,0.05,0.1);
-    wait(1, sec);
     Loader.set(false);
+    wait(1, sec);
     storage.spin(forward);
     Drivetrain.setDriveVelocity(30, percent);
-    Drivetrain.driveFor(16,inches);
+    Drivetrain.setTimeout(2, seconds);
+    Drivetrain.driveFor(14,inches);
+
 
 //Takes out
     low.spin(forward);
-    drivePID(-2,0.3,0.05,0.1);
-    drivePID(2,0.3,0.05,0.1);
+    Drivetrain.driveFor(2,inches);
+    Drivetrain.driveFor(-2,inches);
+    wait(0.1, sec);
+    Drivetrain.driveFor(2,inches);
+    Drivetrain.driveFor(-2,inches);
+    wait(0.1, sec);
+    Drivetrain.driveFor(2,inches);
+    Drivetrain.driveFor(-2,inches);
     wait(3, sec);
     storage.stop();
     low.stop();
 
-    drivePID(-10,0.3,0.05,0.1);
+    drivePID(-5,0.3,0.05,0.1);
     Loader.set(true);
 
     // GO to long Goal  1
-    drivePID(-10,0.3,0.05,0.1);
     Drivetrain.turnToHeading(90, degrees);
     drivePID(15,0.3,0.05,0.1);
     
@@ -176,12 +183,12 @@ void autonCodes(int x) {
     storage.stop();
     low.stop();
 
-    drivePID(-10,0.3,0.05,0.1);
+    drivePID(-8,0.3,0.05,0.1);
     Drivetrain.turnToHeading(180, degrees);
-    drivePID(100,0.3,0.05,0.1);
+    drivePID(90,0.3,0.05,0.1);
 //loader 2
     Drivetrain.turnToHeading(-90, degrees);
-    drivePID(20,0.3,0.05,0.1);
+    drivePID(24,0.3,0.05,0.1);
 
 //takes out 2
     low.spin(forward);
@@ -377,7 +384,10 @@ void usercontrol(void) {
   Controller.ButtonA.released(reverseIntakeRELEASED);
   Controller.ButtonL1.released(intakeStorageRELEASED);
   Controller.ButtonL2.released(storageOutRELEASED);
-  Controller.ButtonUp.pressed(load);
+  Controller.ButtonUp.pressed(loadOut);
+  Controller.ButtonDown.pressed(loadRest);
+
+
   
     
 
