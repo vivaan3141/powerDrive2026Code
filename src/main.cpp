@@ -138,8 +138,8 @@ void autonCodes(int x) {
     wait(1, sec);
     storage.spin(forward);
     Drivetrain.setDriveVelocity(10, percent);
-    Drivetrain.driveFor(10.5,inches);
-    Drivetrain.driveFor(0.5,inches);
+    Drivetrain.driveFor(10,inches);
+    
 
 //Takes out
     low.spin(forward);
@@ -167,11 +167,14 @@ void autonCodes(int x) {
     Drivetrain.driveFor(2,inches);
     Drivetrain.driveFor(-2,inches);
     wait(0.3, sec);
+    Drivetrain.driveFor(2,inches);
+    Drivetrain.driveFor(-2,inches);
+    wait(0.3, sec);
     storage.stop();
-    low.stop();
 //d
     Drivetrain.driveFor(-6,inches);
     Loader.set(true);
+    low.stop();
 
     // GO to long Goal  1
     Drivetrain.turnToHeading(87, degrees);
@@ -181,49 +184,54 @@ void autonCodes(int x) {
     high.spin(forward);
     storage.spin(reverse);
     low.spin(forward);
-    wait(5, sec);
+    wait(7, sec);
     high.stop();
     storage.stop();
     low.stop();
 
-    drivePID(-8,0.3,0.05,0.1);
+    Drivetrain.driveFor(-9,inches);
     Drivetrain.turnToHeading(180, degrees);
-    drivePID(48,0.3,0.05,0.1);
-//loader 2
-    Drivetrain.turnToHeading(90, degrees);
-    drivePID(-30,0.3,0.05,0.1);
-
-//takes out 2
-    low.spin(forward);
-    drivePID(-2,0.3,0.05,0.1);
-    drivePID(2,0.3,0.05,0.1);
-    wait(3, sec);
-    storage.stop();
-    low.stop();
-
-    drivePID(-10,0.3,0.05,0.1);
-    Loader.set(true);
-//Goal 2 go
-    drivePID(-10,0.3,0.05,0.1);
-    Drivetrain.turnToHeading(90, degrees);
-    drivePID(15,0.3,0.05,0.1);
-//scores in goal2
-    high.spin(forward);
-    storage.spin(reverse);
-    low.spin(forward);
-    wait(3, sec);
-    high.stop();
-    storage.stop();
-    low.stop();
     
-    // Goes to Long goal 3
-    drivePID(-10,0.3,0.05,0.1);
-    Drivetrain.turnToHeading(180, degrees);
-    drivePID(-47,0.3,0.05,0.1);
-    turnPID(-90, 0.5,0.05,0.1);
+    Drivetrain.driveFor(52,inches);
+    Drivetrain.setDriveVelocity(20, percent);
+    Drivetrain.turnToHeading(90, degrees);
+    Drivetrain.driveFor(-22,inches);
+    wait(1, sec);
+    Drivetrain.driveFor(-10,inches);
 
-    drivePID(-20,0.3,0.05,0.1);
-    wait(0.5, sec);
+
+
+// //takes out 2
+//     low.spin(forward);
+//     drivePID(-2,0.3,0.05,0.1);
+//     drivePID(2,0.3,0.05,0.1);
+//     wait(3, sec);
+//     storage.stop();
+//     low.stop();
+
+//     drivePID(-10,0.3,0.05,0.1);
+//     Loader.set(true);
+// //Goal 2 go
+//     drivePID(-10,0.3,0.05,0.1);
+//     Drivetrain.turnToHeading(90, degrees);
+//     drivePID(15,0.3,0.05,0.1);
+// //scores in goal2
+//     high.spin(forward);
+//     storage.spin(reverse);
+//     low.spin(forward);
+//     wait(3, sec);
+//     high.stop();
+//     storage.stop();
+//     low.stop();
+    
+//     // Goes to Long goal 3
+//     drivePID(-10,0.3,0.05,0.1);
+//     Drivetrain.turnToHeading(180, degrees);
+//     drivePID(-47,0.3,0.05,0.1);
+//     turnPID(-90, 0.5,0.05,0.1);
+
+//     drivePID(-20,0.3,0.05,0.1);
+//     wait(0.5, sec);
 
   }else if(x==5){
     Drivetrain.setDriveVelocity(60, percent);
