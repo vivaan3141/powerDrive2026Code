@@ -19,6 +19,7 @@ using namespace vex;
 
 // A global instance of competition
 competition Competition;
+bool stateLoader=false;
 
 void autonCodes(int x) {
   if (x==1){
@@ -63,7 +64,7 @@ void autonCodes(int x) {
     low.setVelocity(200, rpm);
     high.setVelocity(200, rpm);
     storage.setVelocity(200, rpm);
-    Drivetrain.setVelocity(80, percent);
+    Drivetrain.setDriveVelocity(80, percent);
 
     drivePID(7,0.1,0.05,-0.1);
     Drivetrain.turnToHeading(-90,degrees);
@@ -75,7 +76,7 @@ void autonCodes(int x) {
     Drivetrain.turnToHeading(-130,degrees);
 
     Drivetrain.setDriveVelocity(10, percent);
-    Drivetrain.setVelocity(80, percent);
+    Drivetrain.setDriveVelocity(80, percent);
     Drivetrain.driveFor(17,inches);
     wait(0.5, sec);
     high.spin(reverse);
@@ -125,20 +126,20 @@ void autonCodes(int x) {
   }else if (x==4){
     //50pt+ Skills
     Loader.set(true);
-    Drivetrain.setDriveVelocity(60, percent);
+    Drivetrain.setDriveVelocity(10, percent);
     low.setVelocity(200, rpm);
     high.setVelocity(200, rpm);
     storage.setVelocity(200, rpm);
-//Goes to Loader 1
-    drivePID(28,0.1,0.05,0.1);
+//A
+    //drivePID(26.5,0.1,0.05,0.1);
+    Drivetrain.driveFor(33,inches);
     Drivetrain.turnToHeading(-90, degrees);
     Loader.set(false);
     wait(1, sec);
     storage.spin(forward);
-    Drivetrain.setDriveVelocity(30, percent);
-    Drivetrain.setTimeout(2, seconds);
-    Drivetrain.driveFor(14,inches);
-
+    Drivetrain.setDriveVelocity(10, percent);
+    Drivetrain.driveFor(10.5,inches);
+    Drivetrain.driveFor(0.5,inches);
 
 //Takes out
     low.spin(forward);
@@ -150,32 +151,47 @@ void autonCodes(int x) {
     wait(0.1, sec);
     Drivetrain.driveFor(2,inches);
     Drivetrain.driveFor(-2,inches);
-    wait(3, sec);
+    wait(0.3, sec);
+    Drivetrain.driveFor(2,inches);
+    Drivetrain.driveFor(-2,inches);
+    wait(0.3, sec);
+    Drivetrain.driveFor(2,inches);
+    Drivetrain.driveFor(-2,inches);
+    wait(0.3, sec);
+    Drivetrain.driveFor(2,inches);
+    Drivetrain.driveFor(-2,inches);
+    wait(0.3, sec);
+    Drivetrain.driveFor(2,inches);
+    Drivetrain.driveFor(-2,inches);
+    wait(0.3, sec);
+    Drivetrain.driveFor(2,inches);
+    Drivetrain.driveFor(-2,inches);
+    wait(0.3, sec);
     storage.stop();
     low.stop();
-
-    drivePID(-5,0.3,0.05,0.1);
+//d
+    Drivetrain.driveFor(-6,inches);
     Loader.set(true);
 
     // GO to long Goal  1
-    Drivetrain.turnToHeading(90, degrees);
-    drivePID(15,0.3,0.05,0.1);
+    Drivetrain.turnToHeading(87, degrees);
+    Drivetrain.driveFor(20,inches);
     
   //Scores in goal 1
     high.spin(forward);
     storage.spin(reverse);
     low.spin(forward);
-    wait(3, sec);
+    wait(5, sec);
     high.stop();
     storage.stop();
     low.stop();
 
     drivePID(-8,0.3,0.05,0.1);
     Drivetrain.turnToHeading(180, degrees);
-    drivePID(90,0.3,0.05,0.1);
+    drivePID(48,0.3,0.05,0.1);
 //loader 2
-    Drivetrain.turnToHeading(-90, degrees);
-    drivePID(24,0.3,0.05,0.1);
+    Drivetrain.turnToHeading(90, degrees);
+    drivePID(-30,0.3,0.05,0.1);
 
 //takes out 2
     low.spin(forward);
@@ -348,12 +364,13 @@ void longGoalRELEASED(){
   high.stop();
   low.stop();
 }
-
 void load(){
-  if (loadRest){
+  if (stateLoader==true){
     loadOut();
-  }else if (loadOut){
+    stateLoader=false; // Happy :)
+  }else {
     loadRest();
+    stateLoader=true;
   }
 }
 
@@ -372,14 +389,11 @@ void usercontrol(void) {
   Controller.ButtonL1.released(intakeStorageRELEASED);
   Controller.ButtonL2.released(storageOutRELEASED);
   
-  
+  Controller.ButtonR1.released(middleGoalRELEASED);
+  Controller.ButtonR2.released(longGoalRELEASED);
 
 // Pneumatics
-  Controller.ButtonUp.pressed(loadOut);
-  Controller.ButtonDown.pressed(loadRest);
-
-  
-    
+  Controller.ButtonUp.pressed(load);
 
   while (true) {
     // ========== DRIVE CONTROL ========== //
