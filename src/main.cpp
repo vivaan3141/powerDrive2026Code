@@ -352,18 +352,14 @@ void usercontrol(void) {
     wait(20, msec);
   }
 }
-
 int main(){
-
   pre_auton();
   Loader.set(true);
 
   Competition.autonomous(autonomous);
   Competition.drivercontrol(usercontrol);
-  
   //Competition.test_auton();
   //Competition.test_driver();
-  
   while (true) {
     wait(100, msec);
   }
