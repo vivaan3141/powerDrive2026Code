@@ -195,28 +195,13 @@ void autonCodes(int x) {
     Drivetrain.driveFor(-10,inches);
 
   }else if(x==5){
-    Drivetrain.setDriveVelocity(60, percent);
+    Drivetrain.setDriveVelocity(10, percent);
     low.setVelocity(200, rpm);
     high.setVelocity(200, rpm);
     storage.setVelocity(200, rpm);
 
-    drivePID(30,0.3,0.05,0.1);
-    turnPID(-90, 0.48,0,0);
-    
-    //Make turns 
-    wait(1, sec);
+    Drivetrain.driveFor(10,inches);
 
-    drivePID(23,0.3,0.05,0.1);
-
-    wait(0.5, sec);
-
-    high.spin(forward);
-    storage.spin(reverse);
-    low.spin(forward);
-    wait(3, sec);
-    high.stop();
-    storage.stop();
-    low.stop();
   }
 }
 
@@ -238,7 +223,7 @@ while(InertialSensor.isCalibrating()){
 
 void autonomous() {
   Drivetrain.setStopping(hold);
-  autonCodes(2);
+  autonCodes(5);
 }
  
 void reverseIntake(){
@@ -284,7 +269,7 @@ void reverseIntakeRELEASED(){
 void intakeStorageRELEASED(){ 
   low.stop();
   storage.stop();
-  high.stop();
+  high.stop();        
 }
 
 void storageOutRELEASED(){
