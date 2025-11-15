@@ -14,7 +14,6 @@
 #include "auton-selector.h"
 #include "functions.h"
 #include <iostream>
-
 using namespace vex;
 
 // A global instance of competition
@@ -23,7 +22,7 @@ bool stateLoader=false;
 
 void autonCodes(int x) {
   if (x==1){
-      Loader.set(true);
+    Loader.set(true);
     // Auton Port 1
     // Scores 1 block on Middle goal and faces optimal position
     // Setup
@@ -124,7 +123,6 @@ void autonCodes(int x) {
     // drivePID(1,0.3,0.05,0.1);
     // drivePID(-3,0.3,0.05,0.1);
   }else if (x==4){
-    //50pt+ Skills
     Loader.set(true);
     Drivetrain.setDriveVelocity(10, percent);
     low.setVelocity(200, rpm);
@@ -139,8 +137,6 @@ void autonCodes(int x) {
     storage.spin(forward);
     Drivetrain.setDriveVelocity(10, percent);
     Drivetrain.driveFor(10,inches);
-    
-
 //Takes out
     low.spin(forward);
     Drivetrain.driveFor(2,inches);
@@ -199,49 +195,7 @@ void autonCodes(int x) {
     wait(1, sec);
     Drivetrain.driveFor(-10,inches);
 
-
-
-// //takes out 2
-//     low.spin(forward);
-//     drivePID(-2,0.3,0.05,0.1);
-//     drivePID(2,0.3,0.05,0.1);
-//     wait(3, sec);
-//     storage.stop();
-//     low.stop();
-
-//     drivePID(-10,0.3,0.05,0.1);
-//     Loader.set(true);
-// //Goal 2 go
-//     drivePID(-10,0.3,0.05,0.1);
-//     Drivetrain.turnToHeading(90, degrees);
-//     drivePID(15,0.3,0.05,0.1);
-// //scores in goal2
-//     high.spin(forward);
-//     storage.spin(reverse);
-//     low.spin(forward);
-//     wait(3, sec);
-//     high.stop();
-//     storage.stop();
-//     low.stop();
-    
-//     // Goes to Long goal 3
-//     drivePID(-10,0.3,0.05,0.1);
-//     Drivetrain.turnToHeading(180, degrees);
-//     drivePID(-47,0.3,0.05,0.1);
-//     turnPID(-90, 0.5,0.05,0.1);
-
-//     drivePID(-20,0.3,0.05,0.1);
-//     wait(0.5, sec);
-
   }else if(x==5){
-    Drivetrain.setDriveVelocity(60, percent);
-    low.setVelocity(200, rpm);
-    high.setVelocity(200, rpm);
-    storage.setVelocity(200, rpm);
-
-    drivePID(30,0.3,0.05,0.1);
-    turnPID(-90, 0.48,0,0);
-  }else if (x==6){
     Drivetrain.setDriveVelocity(60, percent);
     low.setVelocity(200, rpm);
     high.setVelocity(200, rpm);
@@ -267,7 +221,6 @@ void autonCodes(int x) {
   }
 }
 
-
 void pre_auton(void) {
   Loader.set(true);
   vexcodeInit();
@@ -283,12 +236,12 @@ while(InertialSensor.isCalibrating()){
     wait(5, sec);
 }
 }
+
 void autonomous() {
   Drivetrain.setStopping(hold);
   autonCodes(4);
 }
  
-
 void reverseIntake(){
   low.spin(reverse);
   high.spin(reverse);
@@ -327,32 +280,12 @@ void loadRest(){
   
 }
 
-// All released button functions
-
 
 void reverseIntakeRELEASED(){
   low.stop();
   high.stop();
 
 }
-
-
-
-
-    
-
-    /*
-    A more measured approach is to start with a low gain, 6:58 with integral and derivative disabled. 
-    7:02 Watch the process and begin incrementally adjusting the gain 7:06 by doubling the value. 
-    7:08 When the process begins to oscillate, 7:11 adjust the gain value down by 50%. 
-    7:14 Employ a small integral value and watch the process. 
-    7:19 Double the value incrementally 
-    7:21 until oscillation occurs 
-    7:23 then cut the integral by 50%. 
-    7:26 At this point, you should be somewhere in the neighborhood 
-
-    */ 
-
 
 void intakeStorageRELEASED(){ 
   low.stop();
@@ -421,7 +354,6 @@ void usercontrol(void) {
   }
 }
 
-
 int main(){
 
   pre_auton();
@@ -433,10 +365,6 @@ int main(){
   //Competition.test_auton();
   //Competition.test_driver();
   
-
-
-
-
   while (true) {
     wait(100, msec);
   }
