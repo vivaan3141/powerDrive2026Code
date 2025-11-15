@@ -75,8 +75,8 @@ void autonCodes(int x) {
     Drivetrain.turnToHeading(-130,degrees);
 
     Drivetrain.setDriveVelocity(10, percent);
-    Drivetrain.setDriveVelocity(80, percent);
-    Drivetrain.driveFor(17,inches);
+    Drivetrain.setDriveVelocity(10, percent);
+    Drivetrain.driveFor(16.1,inches);
     wait(0.5, sec);
     high.spin(reverse);
     storage.spin(reverse);
@@ -85,7 +85,6 @@ void autonCodes(int x) {
     high.stop();
     storage.stop();
     low.stop();
-    low.setVelocity(200, rpm);
   } else if (x==3){
     // Skills Auton Port 3
     //Scores 1 block on long goal and parks
@@ -239,7 +238,7 @@ while(InertialSensor.isCalibrating()){
 
 void autonomous() {
   Drivetrain.setStopping(hold);
-  autonCodes(4);
+  autonCodes(2);
 }
  
 void reverseIntake(){
