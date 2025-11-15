@@ -271,19 +271,14 @@ void longGoal(){
 void loadOut(){
   Controller.Screen.print("Loading"); 
   Loader.set(true);
-  
-
 }
+
 void loadRest(){
   Loader.set(false);
-  
 }
-
-
 void reverseIntakeRELEASED(){
   low.stop();
   high.stop();
-
 }
 
 void intakeStorageRELEASED(){ 
