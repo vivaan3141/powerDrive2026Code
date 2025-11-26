@@ -31,10 +31,12 @@ vex::smartdrive Drivetrain = smartdrive(LeftDrive, RightDrive, InertialSensor, 2
 
 vex::motor low (vex::PORT9,vex::gearSetting::ratio18_1); //Intake low
 vex::motor high (vex::PORT1,vex::gearSetting::ratio18_1, true); //Intake high
-vex::motor storage (vex::PORT10,vex::gearSetting::ratio18_1); //Bag storage
+vex::motor storage (vex::PORT8,vex::gearSetting::ratio18_1); //Bag storage
 
 
 vex::digital_out Loader (Brain.ThreeWirePort.A);
+vex::digital_out Descore (Brain.ThreeWirePort.H);
+
 
 
 void vexcodeInit() {

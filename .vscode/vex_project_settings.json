@@ -4,12 +4,12 @@
 		"json": 2
 	},
 	"project": {
-		"name": "VEX_Camp_Template_KZ",
-		"description": "",
-		"creationDate": "5/27/2025, 10:30:19 PM",
+		"name": " 13777X",
+		"description": "Hi",
+		"creationDate": "7/15/2025",
 		"platform": "V5",
 		"language": "cpp",
-		"slot": 5,
+		"slot": 1,
 		"sdkVersion": "V5_20240802_15_00_00",
 		"cpp": {
 			"includePath": [],

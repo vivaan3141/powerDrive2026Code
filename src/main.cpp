@@ -19,6 +19,8 @@ using namespace vex;
 // A global instance of competition
 competition Competition;
 bool stateLoader=false;
+bool stateDescore=false;
+
 
 void autonCodes(int x) {
   if (x==1){
@@ -44,7 +46,7 @@ void autonCodes(int x) {
     wait(1, sec);
     Drivetrain.setDriveVelocity(10, percent);
 
-    Drivetrain.driveFor(17,inches);
+    Drivetrain.driveFor(17.7,inches);
     wait(0.5, sec);
 
     high.spin(reverse);
@@ -223,7 +225,7 @@ while(InertialSensor.isCalibrating()){
 
 void autonomous() {
   Drivetrain.setStopping(hold);
-  autonCodes(5);
+  autonCodes(1);
 }
  
 void reverseIntake(){
@@ -261,6 +263,14 @@ void loadOut(){
 void loadRest(){
   Loader.set(false);
 }
+
+void descoreOut(){
+  Descore.set(true);
+}
+
+void descoreIn(){
+  Descore.set(false);
+}
 void reverseIntakeRELEASED(){
   low.stop();
   high.stop();
@@ -294,6 +304,16 @@ void load(){
   }
 }
 
+void descore(){
+  if (stateDescore==true){
+    descoreOut();
+    stateDescore=false; // Happy :)
+  }else {
+    descoreIn();
+    stateDescore=true;
+  }
+}
+
 void usercontrol(void) {
   high.setVelocity(200, rpm);
   low.setVelocity(200, rpm);
@@ -314,6 +334,8 @@ void usercontrol(void) {
 
 // Pneumatics
   Controller.ButtonUp.pressed(load);
+  Controller.ButtonB.pressed(descore);
+
 
   while (true) {
     // ========== DRIVE CONTROL ========== //
