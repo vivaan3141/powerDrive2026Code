@@ -31,9 +31,9 @@ extern vex::motor storage;
 extern vex::inertial InertialSensor;
 
 extern vex::digital_out Loader;
+
 extern vex::digital_out Descore;
 
-// extern vex::digital_out SingleActingPiston;
 
 void vexcodeInit();
 

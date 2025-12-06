@@ -10,19 +10,18 @@
 #include "vex.h"
 #include "robot-config.h"
 #include "PID.h"
-#include "autons.cpp"
-#include "auton-selector.h"
 #include "functions.h"
 #include <iostream>
+
 using namespace vex;
 
-// A global instance of competition
 competition Competition;
 bool stateLoader=false;
 bool stateDescore=false;
 
 
 void autonCodes(int x) {
+  Brain.Screen.print("Auton type");
   if (x==1){
     Loader.set(true);
     // Auton Port 1
@@ -45,10 +44,10 @@ void autonCodes(int x) {
     
     wait(1, sec);
     Drivetrain.setDriveVelocity(10, percent);
-
+    
     Drivetrain.driveFor(17.7,inches);
     wait(0.5, sec);
-
+    
     high.spin(reverse);
     storage.spin(reverse);
     low.spin(forward);
@@ -204,33 +203,55 @@ void autonCodes(int x) {
 
     Drivetrain.driveFor(10,inches);
 
+  }else if(x==6){
+    //Descore Test
+    Descore.set(true);
+  Brain.Screen.print("Descore True ");
+  task::sleep(2000);
+  Descore.set(false);
+  Brain.Screen.print("Descore False ");
+  task::sleep(2000);
+  Descore.set(true);
+  Brain.Screen.print("Descore True ");
   }
 }
 
+// Pre-Autonomous
+
 void pre_auton(void) {
   Loader.set(true);
+  Descore.set(true);
+  Brain.Screen.print("Descore True ");
+  task::sleep(2000);
+  Descore.set(false);
+  Brain.Screen.print("Descore False");
+  task::sleep(2000);
+  Descore.set(true);
+  Brain.Screen.print("Descore True ");
+
   vexcodeInit();
-  displayAutonSelector();
   // Start calibration.
-InertialSensor.calibrate();
-// Print that the Inertial Sensor is calibrating while
-// waiting for it to finish calibrating.
-low.setVelocity(200, rpm);
-high.setVelocity(200, rpm);
-while(InertialSensor.isCalibrating()){
+  InertialSensor.calibrate();
+  // Print that the Inertial Sensor is calibrating while
+  // waiting for it to finish calibrating.
+  low.setVelocity(200, rpm);
+  high.setVelocity(200, rpm);
+  while(InertialSensor.isCalibrating()){
     Brain.Screen.print("Inertial Calibrating");
     wait(5, sec);
+  }
 }
-}
+// USER CONTROLS
 
 void autonomous() {
   Drivetrain.setStopping(hold);
-  autonCodes(1);
+  autonCodes(6);
 }
  
 void reverseIntake(){
   low.spin(reverse);
   high.spin(reverse);
+Controller.Screen.clearLine();
 
 }
 
@@ -238,59 +259,86 @@ void intakeStorage(){
   Controller.Screen.print("Placing in storage"); 
   low.spin(forward);
   storage.spin(forward);
+  Controller.Screen.clearLine();
+
 }
 
 void storageOut(){
+  Controller.Screen.clearLine();
+
   Controller.Screen.print("Taking out of storage"); 
   storage.spin(reverse);
+  
 }
 void middleGoal(){
+  Controller.Screen.clearLine();
+
   low.spin(forward);
   high.spin(reverse);
   Controller.Screen.print("Middle Goal");
 }
 void longGoal(){
+  Controller.Screen.clearLine();
+
   high.spin(forward); // Score long, moves all stages
   low.spin(forward);
 
   Controller.Screen.print("LONG GOAL");
 }
 void loadOut(){
+  Controller.Screen.clearLine();
+
   Controller.Screen.print("Loading"); 
   Loader.set(true);
 }
 
 void loadRest(){
+  Controller.Screen.clearLine();
+
   Loader.set(false);
 }
 
 void descoreOut(){
+  Controller.Screen.clearLine();
+
   Descore.set(true);
 }
 
 void descoreIn(){
+  Controller.Screen.clearLine();
+
   Descore.set(false);
 }
 void reverseIntakeRELEASED(){
+  Controller.Screen.clearLine();
+
   low.stop();
   high.stop();
 }
 
 void intakeStorageRELEASED(){ 
+  Controller.Screen.clearLine();
+
   low.stop();
   storage.stop();
   high.stop();        
 }
 
 void storageOutRELEASED(){
+  Controller.Screen.clearLine();
+
   storage.stop();
 }
 void middleGoalRELEASED(){
+  Controller.Screen.clearLine();
+
   low.stop();
   high.stop();
 
 }
 void longGoalRELEASED(){
+  Controller.Screen.clearLine();
+
   high.stop();
   low.stop();
 }
@@ -304,6 +352,8 @@ void load(){
   }
 }
 
+
+
 void descore(){
   if (stateDescore==true){
     descoreOut();
@@ -312,6 +362,13 @@ void descore(){
     descoreIn();
     stateDescore=true;
   }
+}
+
+void descoreTest(){
+  Descore.set(true);
+  wait(1,sec);
+    Descore.set(false);
+
 }
 
 void usercontrol(void) {
@@ -333,9 +390,10 @@ void usercontrol(void) {
   Controller.ButtonR2.released(longGoalRELEASED);
 
 // Pneumatics
-  Controller.ButtonUp.pressed(load);
-  Controller.ButtonB.pressed(descore);
-
+Controller.ButtonUp.pressed(load);
+Controller.ButtonB.pressed(descore);
+Controller.ButtonX.pressed(descoreIn);
+Controller.ButtonY.pressed(descoreTest);
 
   while (true) {
     // ========== DRIVE CONTROL ========== //
@@ -355,9 +413,10 @@ void usercontrol(void) {
   }
 }
 int main(){
+  Brain.Screen.print("in main v20251128-01");
+  Controller.Screen.print("in main v20251128-01");
+  wait(5,seconds);
   pre_auton();
-  Loader.set(true);
-
   Competition.autonomous(autonomous);
   Competition.drivercontrol(usercontrol);
   //Competition.test_auton();

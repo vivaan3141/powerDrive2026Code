@@ -3,14 +3,7 @@
 using namespace vex;
 #include <iostream>
 
-//Configuration!
-
-/*Reminders: 
-Make sure that all your ports are different and correct! 
-Make sure all of your motor + piston names are different and not confusing.
-If it seems like some of your motors are running against eachother in the drivetrain, try switching around the true/false
-
-*/
+//Configuration for ports
 
 vex::brain Brain;
 vex::controller Controller(vex::controllerType::primary);
@@ -35,9 +28,8 @@ vex::motor storage (vex::PORT8,vex::gearSetting::ratio18_1); //Bag storage
 
 
 vex::digital_out Loader (Brain.ThreeWirePort.A);
-vex::digital_out Descore (Brain.ThreeWirePort.H);
 
-
+vex::digital_out Descore (Brain.ThreeWirePort.G);
 
 void vexcodeInit() {
   InertialSensor.calibrate();
