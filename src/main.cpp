@@ -1,11 +1,6 @@
-/*----------------------------------------------------------------------------*/
-/*                                                                            */
-/*    Module:       main.cpp                                                  */
-/*    Author:       Vivaan Gupta                                              */
-/*    Created:      5/27/2025, 10:30:19 PM                                    */
-/*    Description:  V5 project                                                */
-/*                                                                            */
-/*----------------------------------------------------------------------------*/
+/*    Module:       main.cpp                               */
+/*    Author:       Vivaan Gupta                           */
+/*    Created:      5/27/2025, 10:30:19 PM                 */
 
 #include "vex.h"
 #include "robot-config.h"
@@ -21,7 +16,6 @@ bool stateDescore=false;
 
 
 void autonCodes(int x) {
-  Brain.Screen.print("Auton type");
   if (x==1){
     Loader.set(true);
     // Auton Port 1
@@ -204,15 +198,9 @@ void autonCodes(int x) {
     Drivetrain.driveFor(10,inches);
 
   }else if(x==6){
-    //Descore Test
-    Descore.set(true);
-  Brain.Screen.print("Descore True ");
-  task::sleep(2000);
-  Descore.set(false);
-  Brain.Screen.print("Descore False ");
-  task::sleep(2000);
-  Descore.set(true);
-  Brain.Screen.print("Descore True ");
+    // Test
+  
+
   }
 }
 
@@ -331,11 +319,10 @@ void storageOutRELEASED(){
 }
 void middleGoalRELEASED(){
   Controller.Screen.clearLine();
-
   low.stop();
   high.stop();
-
 }
+
 void longGoalRELEASED(){
   Controller.Screen.clearLine();
 
@@ -351,8 +338,6 @@ void load(){
     stateLoader=true;
   }
 }
-
-
 
 void descore(){
   if (stateDescore==true){
@@ -370,6 +355,12 @@ void descoreTest(){
     Descore.set(false);
 
 }
+
+void PID(){
+  drivePID(24,0.1,0.05,-0.1);
+}
+
+
 
 void usercontrol(void) {
   high.setVelocity(200, rpm);
@@ -389,11 +380,11 @@ void usercontrol(void) {
   Controller.ButtonR1.released(middleGoalRELEASED);
   Controller.ButtonR2.released(longGoalRELEASED);
 
-// Pneumatics
-Controller.ButtonUp.pressed(load);
-Controller.ButtonB.pressed(descore);
-Controller.ButtonX.pressed(descoreIn);
-Controller.ButtonY.pressed(descoreTest);
+  // Pneumatics
+  Controller.ButtonUp.pressed(load);
+  Controller.ButtonB.pressed(descore);
+  Controller.ButtonX.pressed(descoreIn);
+  Controller.ButtonY.pressed(descoreTest);
 
   while (true) {
     // ========== DRIVE CONTROL ========== //
@@ -413,9 +404,6 @@ Controller.ButtonY.pressed(descoreTest);
   }
 }
 int main(){
-  Brain.Screen.print("in main v20251128-01");
-  Controller.Screen.print("in main v20251128-01");
-  wait(5,seconds);
   pre_auton();
   Competition.autonomous(autonomous);
   Competition.drivercontrol(usercontrol);
