@@ -383,8 +383,7 @@ void usercontrol(void) {
   // Pneumatics
   Controller.ButtonUp.pressed(load);
   Controller.ButtonB.pressed(descore);
-  Controller.ButtonX.pressed(descoreIn);
-  Controller.ButtonY.pressed(descoreTest);
+  Controller.ButtonX.pressed(PID);
 
   while (true) {
     // ========== DRIVE CONTROL ========== //
