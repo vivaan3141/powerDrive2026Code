@@ -117,7 +117,7 @@ void autonCodes(int x) {
     // drivePID(1,0.3,0.05,0.1);
     // drivePID(-3,0.3,0.05,0.1);
   }else if (x==4){
-    Loader.set(true);
+    Loader.set(false);
     Drivetrain.setDriveVelocity(10, percent);
     low.setVelocity(200, rpm);
     high.setVelocity(200, rpm);
@@ -126,7 +126,7 @@ void autonCodes(int x) {
     //drivePID(26.5,0.1,0.05,0.1);
     Drivetrain.driveFor(33,inches);
     Drivetrain.turnToHeading(-90, degrees);
-    Loader.set(false);
+    Loader.set(true);
     wait(1, sec);
     storage.spin(forward);
     Drivetrain.setDriveVelocity(10, percent);
@@ -163,7 +163,7 @@ void autonCodes(int x) {
     storage.stop();
 //d
     Drivetrain.driveFor(-6,inches);
-    Loader.set(true);
+    Loader.set(false);
     low.stop();
 
     // GO to long Goal  1
@@ -190,16 +190,52 @@ void autonCodes(int x) {
     Drivetrain.driveFor(-10,inches);
 
   }else if(x==5){
+    /// Long Goal 1
+    Loader.set(false);
     Drivetrain.setDriveVelocity(10, percent);
     low.setVelocity(200, rpm);
     high.setVelocity(200, rpm);
     storage.setVelocity(200, rpm);
-
+//A
+    //drivePID(26.5,0.1,0.05,0.1);
+    Drivetrain.driveFor(31,inches);
+    Drivetrain.turnToHeading(-90, degrees);
+    Loader.set(true);
+    wait(1, sec);
+    storage.spin(forward);
+    Drivetrain.setDriveVelocity(5, percent);
     Drivetrain.driveFor(10,inches);
+//Takes out
+    low.spin(forward);
+    Drivetrain.driveFor(2,inches);
+    Drivetrain.driveFor(-1,inches);
+    wait(1, sec);
+    
+    Drivetrain.driveFor(1,inches);
+    Drivetrain.driveFor(-1,inches);
+    wait(0.75, sec);
+   
+    storage.stop();
+//d
+    Drivetrain.driveFor(-6,inches);
+    Loader.set(false);
+    low.stop();
+    Drivetrain.setDriveVelocity(10, percent);
 
-  }else if(x==6){
-    // Test
-  
+    // GO to long Goal  1
+    Drivetrain.turnToHeading(87, degrees);
+    Drivetrain.turnToHeading(90, degrees);
+
+    Drivetrain.driveFor(20,inches);
+    
+  //Scores in goal 1
+    high.spin(forward);
+    storage.spin(reverse);
+    low.spin(forward);
+    wait(7, sec);
+    high.stop();
+    storage.stop();
+    low.stop();
 
   }
 }
@@ -233,7 +269,7 @@ void pre_auton(void) {
 
 void autonomous() {
   Drivetrain.setStopping(hold);
-  autonCodes(6);
+  autonCodes(5);
 }
  
 void reverseIntake(){
