@@ -7,6 +7,7 @@
 #include "PID.h"
 #include "functions.h"
 #include <iostream>
+#include <string>
 
 using namespace vex;
 
@@ -14,10 +15,39 @@ competition Competition;
 bool stateLoader=false;
 bool stateDescore=false;
 
+// enum Direction {
+//   left,
+//   right
+// };
+
+// void turn(int deg, Direction dir){
+//   if (dir == left){
+//     Drivetrain.turnToHeading(deg,degrees);
+//   }else if (dir == right){
+//     Drivetrain.turnToHeading((0-deg),degrees);
+//   }
+// }
+
+void turn(int deg, std::string dir){
+  if (dir == "left" or "l"){
+    Drivetrain.turnToHeading(deg,degrees);
+  }else if (dir == "right" or "r"){
+    Drivetrain.turnToHeading((0-deg),degrees);
+  }
+}
+
+void setSpeedAuton(){
+    Loader.set(false);
+    Descore.set(false);
+    low.setVelocity(150, rpm);
+    high.setVelocity(200, rpm);
+    storage.setVelocity(200, rpm);
+}
+
 
 void autonCodes(int x) {
   if (x==1){
-    Loader.set(true);
+    Loader.set(false);
     // Auton Port 1
     // Scores 1 block on Middle goal and faces optimal position
     // Setup
@@ -190,16 +220,81 @@ void autonCodes(int x) {
     Drivetrain.driveFor(-10,inches);
 
   }else if(x==5){
+    Controller.Screen.print("V12");
     /// Long Goal 1
     Loader.set(false);
     Drivetrain.setDriveVelocity(10, percent);
-    low.setVelocity(200, rpm);
+    low.setVelocity(150, rpm);
+    high.setVelocity(200, rpm);
+    storage.setVelocity(200, rpm);
+//A
+    Drivetrain.driveFor(32,inches);
+        Loader.set(true);
+    Drivetrain.turnToHeading(-90, degrees);
+    // wait(0.75, sec);
+    storage.spin(forward);
+    Drivetrain.setDriveVelocity(15, percent);
+        Drivetrain.setTurnVelocity(8, percent);
+          Drivetrain.setTurnConstant(0.6);
+
+
+    Drivetrain.driveFor(10,inches);
+//Takes out
+    low.spin(forward);
+    Drivetrain.driveFor(2.5,inches);
+    Drivetrain.driveFor(-1.5,inches);
+    wait(0.1, sec);
+    
+    Drivetrain.driveFor(1,inches);
+    wait(0.1, sec);
+    Drivetrain.driveFor(-1,inches);
+
+    wait(0.5, sec);
+    Drivetrain.driveFor(-6,inches);
+    Loader.set(false);
+    Drivetrain.setDriveVelocity(13, percent);
+
+    // GO to long Goal  1
+    Drivetrain.turnToHeading(86.6, degrees);
+    // Drivetrain.turnToHeading(90, degrees);
+    double value = InertialSensor.heading();
+
+        Controller.Screen.print(value);
+
+    Drivetrain.driveFor(18,inches);
+    storage.stop();
+    low.stop();
+    Drivetrain.setDriveVelocity(13, percent);
+
+    Drivetrain.driveFor(4,inches);
+
+  //Scores in goal 1
+    high.spin(forward);
+    storage.spin(reverse);
+    low.spin(forward);
+    // wait(0.3, sec);
+
+    // high.stop();
+    // storage.stop();
+    // low.stop();
+    //     wait(0.3, sec);
+
+    // high.spin(forward);
+    // storage.spin(reverse);
+    // low.spin(forward);
+    
+  }else if(x==6){
+    Controller.Screen.print("Loader + Long Goal Match 2");
+    /// Long Goal 1
+    Loader.set(false);
+    Drivetrain.setDriveVelocity(25, percent);
+    low.setVelocity(150, rpm);
     high.setVelocity(200, rpm);
     storage.setVelocity(200, rpm);
 //A
     //drivePID(26.5,0.1,0.05,0.1);
-    Drivetrain.driveFor(31,inches);
-    Drivetrain.turnToHeading(-90, degrees);
+    Drivetrain.driveFor(32.5,inches);
+    Drivetrain.turnToHeading(90, degrees);
     Loader.set(true);
     wait(1, sec);
     storage.spin(forward);
@@ -209,10 +304,10 @@ void autonCodes(int x) {
     low.spin(forward);
     Drivetrain.driveFor(2,inches);
     Drivetrain.driveFor(-1,inches);
-    wait(1, sec);
+    wait(0.3, sec);
     
-    Drivetrain.driveFor(1,inches);
-    Drivetrain.driveFor(-1,inches);
+    Drivetrain.driveFor(0.5,inches);
+    Drivetrain.driveFor(-0.5,inches);
     wait(0.75, sec);
    
     storage.stop();
@@ -222,20 +317,87 @@ void autonCodes(int x) {
     low.stop();
     Drivetrain.setDriveVelocity(10, percent);
 
-    // GO to long Goal  1
-    Drivetrain.turnToHeading(87, degrees);
-    Drivetrain.turnToHeading(90, degrees);
+    // Go to long Goal  1
+    Drivetrain.turnToHeading(-87, degrees);
+    // Drivetrain.turnToHeading(90, degrees);
 
-    Drivetrain.driveFor(20,inches);
-    
+Drivetrain.driveFor(11,inches);
+    storage.stop();
+    low.stop();
+        Drivetrain.setDriveVelocity(13, percent);
+
+    Drivetrain.driveFor(11,inches);
+
   //Scores in goal 1
     high.spin(forward);
     storage.spin(reverse);
     low.spin(forward);
-    wait(7, sec);
-    high.stop();
-    storage.stop();
-    low.stop();
+
+  }else if (x==7){
+
+Controller.Screen.print("V12");
+   /// Long Goal 1
+   Loader.set(false);
+   Drivetrain.setDriveVelocity(20, percent);
+   low.setVelocity(150, rpm);
+   high.setVelocity(200, rpm);
+   storage.setVelocity(200, rpm);
+//A
+   Drivetrain.driveFor(31,inches);
+   Drivetrain.turnToHeading(-90, degrees);
+   Loader.set(true);
+   wait(1, sec);
+   storage.spin(forward);
+   Drivetrain.setDriveVelocity(5, percent);
+   Drivetrain.driveFor(10,inches);
+//Takes out
+   low.spin(forward);
+   Drivetrain.driveFor(2,inches);
+   Drivetrain.driveFor(-1,inches);
+   wait(0.3, sec);
+  
+   Drivetrain.driveFor(1,inches);
+   Drivetrain.driveFor(-1,inches);
+   wait(0.75, sec);
+
+   Drivetrain.driveFor(1,inches);
+   Drivetrain.driveFor(-1,inches);
+   wait(0.75, sec);
+
+   Drivetrain.driveFor(1,inches);
+   Drivetrain.driveFor(-1,inches);
+   wait(0.75, sec);
+
+   Drivetrain.driveFor(1,inches);
+   Drivetrain.driveFor(-1,inches);
+   wait(0.75, sec);
+ 
+//d
+   Drivetrain.driveFor(-6,inches);
+   Loader.set(false);
+   low.stop();
+   Drivetrain.setDriveVelocity(15, percent);
+
+
+   // GO to long Goal  1
+   Drivetrain.turnToHeading(84, degrees);
+   // Drivetrain.turnToHeading(90, degrees);
+  
+
+
+   Drivetrain.driveFor(11,inches);
+   storage.stop();
+   low.stop();
+       Drivetrain.setDriveVelocity(13, percent);
+
+
+   Drivetrain.driveFor(11,inches);
+
+
+ //Scores in goal 1
+   high.spin(forward);
+   storage.spin(reverse);
+   low.spin(forward);
 
   }
 }
@@ -243,15 +405,7 @@ void autonCodes(int x) {
 // Pre-Autonomous
 
 void pre_auton(void) {
-  Loader.set(true);
-  Descore.set(true);
-  Brain.Screen.print("Descore True ");
-  task::sleep(2000);
-  Descore.set(false);
-  Brain.Screen.print("Descore False");
-  task::sleep(2000);
-  Descore.set(true);
-  Brain.Screen.print("Descore True ");
+  Loader.set(false);
 
   vexcodeInit();
   // Start calibration.
