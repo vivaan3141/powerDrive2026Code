@@ -290,49 +290,53 @@ void autonCodes(int x) {
     // low.spin(forward);
     
   }else if(x==6){
-    Controller.Screen.print("Loader + Long Goal Match 2");
+    
+    Controller.Screen.print("V67");
     /// Long Goal 1
     Loader.set(false);
-    Drivetrain.setDriveVelocity(25, percent);
+    Drivetrain.setDriveVelocity(10, percent);
     low.setVelocity(150, rpm);
     high.setVelocity(200, rpm);
     storage.setVelocity(200, rpm);
 //A
-    //drivePID(26.5,0.1,0.05,0.1);
     Drivetrain.driveFor(32.5,inches);
+        Loader.set(true);
     Drivetrain.turnToHeading(90, degrees);
-    Loader.set(true);
-    wait(1, sec);
+    // wait(0.75, sec);
     storage.spin(forward);
-    Drivetrain.setDriveVelocity(5, percent);
+    Drivetrain.setDriveVelocity(15, percent);
+    Drivetrain.setTurnVelocity(8, percent);
+    Drivetrain.setTurnConstant(0.6);
     Drivetrain.driveFor(10,inches);
 //Takes out
     low.spin(forward);
-    Drivetrain.driveFor(2,inches);
-    Drivetrain.driveFor(-1,inches);
+    Drivetrain.driveFor(2.5,inches);
+    Drivetrain.driveFor(-1.5,inches);
     wait(0.3, sec);
     
+    Drivetrain.driveFor(1.5,inches);
+    Drivetrain.driveFor(-1.5,inches);
+    wait(0.75, sec);
     Drivetrain.driveFor(0.5,inches);
     Drivetrain.driveFor(-0.5,inches);
     wait(0.75, sec);
    
-    storage.stop();
 //d
     Drivetrain.driveFor(-6,inches);
     Loader.set(false);
-    low.stop();
     Drivetrain.setDriveVelocity(10, percent);
 
     // Go to long Goal  1
     Drivetrain.turnToHeading(-87, degrees);
     // Drivetrain.turnToHeading(90, degrees);
 
-Drivetrain.driveFor(11,inches);
+Drivetrain.driveFor(18,inches);
     storage.stop();
     low.stop();
+    
         Drivetrain.setDriveVelocity(13, percent);
 
-    Drivetrain.driveFor(11,inches);
+    Drivetrain.driveFor(2.5,inches);
 
   //Scores in goal 1
     high.spin(forward);
