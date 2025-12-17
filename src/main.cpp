@@ -254,22 +254,22 @@ void autonCodes(int x) {
     wait(0.1, sec);
     Drivetrain.driveFor(-0.5,inches);
 
-    wait(0.5, sec);
+    wait(0.1, sec);
     Drivetrain.driveFor(-6,inches);
     Loader.set(false);
-    Drivetrain.setDriveVelocity(13, percent);
+    Drivetrain.setDriveVelocity(20, percent);
 
     // GO to long Goal  1
     Drivetrain.turnToHeading(87, degrees);
     // Drivetrain.turnToHeading(90, degrees);
     double value = InertialSensor.heading();
-
+    std::cout<<"Degrees: "<<value;
         Controller.Screen.print(value);
 
     Drivetrain.driveFor(18,inches);
     storage.stop();
     low.stop();
-    Drivetrain.setDriveVelocity(13, percent);
+    Drivetrain.setDriveVelocity(10, percent);
 
     Drivetrain.driveFor(2.5,inches);
 
@@ -277,10 +277,11 @@ void autonCodes(int x) {
     high.spin(forward);
     storage.spin(reverse);
     low.spin(forward);
+    
     // wait(0.3, sec);
 
     // high.stop();
-    // storage.stop();
+    // storage.spin(forward);
     // low.stop();
     //     wait(0.3, sec);
 
