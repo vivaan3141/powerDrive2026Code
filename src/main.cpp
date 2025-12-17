@@ -220,7 +220,7 @@ void autonCodes(int x) {
     Drivetrain.driveFor(-10,inches);
 
   }else if(x==5){
-    Controller.Screen.print("V12");
+    Controller.Screen.print("V67");
     /// Long Goal 1
     Loader.set(false);
     Drivetrain.setDriveVelocity(10, percent);
@@ -228,26 +228,31 @@ void autonCodes(int x) {
     high.setVelocity(200, rpm);
     storage.setVelocity(200, rpm);
 //A
-    Drivetrain.driveFor(32,inches);
+    Drivetrain.driveFor(32.5,inches);
         Loader.set(true);
     Drivetrain.turnToHeading(-90, degrees);
     // wait(0.75, sec);
     storage.spin(forward);
     Drivetrain.setDriveVelocity(15, percent);
-        Drivetrain.setTurnVelocity(8, percent);
-          Drivetrain.setTurnConstant(0.6);
+    Drivetrain.setTurnVelocity(8, percent);
+    Drivetrain.setTurnConstant(0.6);
 
 
     Drivetrain.driveFor(10,inches);
 //Takes out
     low.spin(forward);
     Drivetrain.driveFor(2.5,inches);
+
     Drivetrain.driveFor(-1.5,inches);
     wait(0.1, sec);
     
-    Drivetrain.driveFor(1,inches);
+    Drivetrain.driveFor(1.5,inches);
     wait(0.1, sec);
-    Drivetrain.driveFor(-1,inches);
+    Drivetrain.driveFor(-1.5,inches);
+
+    Drivetrain.driveFor(0.5,inches);
+    wait(0.1, sec);
+    Drivetrain.driveFor(-0.5,inches);
 
     wait(0.5, sec);
     Drivetrain.driveFor(-6,inches);
@@ -255,7 +260,7 @@ void autonCodes(int x) {
     Drivetrain.setDriveVelocity(13, percent);
 
     // GO to long Goal  1
-    Drivetrain.turnToHeading(86.6, degrees);
+    Drivetrain.turnToHeading(87, degrees);
     // Drivetrain.turnToHeading(90, degrees);
     double value = InertialSensor.heading();
 
@@ -266,7 +271,7 @@ void autonCodes(int x) {
     low.stop();
     Drivetrain.setDriveVelocity(13, percent);
 
-    Drivetrain.driveFor(4,inches);
+    Drivetrain.driveFor(2.5,inches);
 
   //Scores in goal 1
     high.spin(forward);
@@ -398,6 +403,15 @@ Controller.Screen.print("V12");
    high.spin(forward);
    storage.spin(reverse);
    low.spin(forward);
+
+   wait(3, sec);
+
+   high.stop();
+   storage.stop();
+   low.stop();
+
+
+
 
   }
 }
@@ -545,12 +559,15 @@ void descoreTest(){
     Descore.set(false);
 
 }
+void tempStore(){
+    Controller.Screen.print(storage.temperature(celsius)); 
+}
+
+
 
 void PID(){
   drivePID(24,0.1,0.05,-0.1);
 }
-
-
 
 void usercontrol(void) {
   high.setVelocity(200, rpm);
@@ -569,6 +586,7 @@ void usercontrol(void) {
   
   Controller.ButtonR1.released(middleGoalRELEASED);
   Controller.ButtonR2.released(longGoalRELEASED);
+  Controller.ButtonY.released(tempStore);
 
   // Pneumatics
   Controller.ButtonUp.pressed(load);
