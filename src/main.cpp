@@ -509,7 +509,15 @@ Controller.Screen.print("V67");
     storage.stop();
 
     // Time for a park
-
+    Drivetrain.driveFor(-9,inches);
+    Drivetrain.turnToHeading(0, degrees);
+    
+    Drivetrain.driveFor(52,inches);
+    Drivetrain.setDriveVelocity(20, percent);
+    Drivetrain.turnToHeading(90, degrees);
+    Drivetrain.driveFor(-22,inches);
+    wait(1, sec);
+    Drivetrain.driveFor(-10,inches);
   }
 }
 
