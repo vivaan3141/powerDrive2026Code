@@ -364,7 +364,7 @@ Controller.Screen.print("V67");
     Drivetrain.turnToHeading(-90, degrees);
     // wait(0.75, sec);
     storage.spin(forward);
-    Drivetrain.setDriveVelocity(15, percent);
+    Drivetrain.setDriveVelocity(10, percent);
     Drivetrain.setTurnVelocity(8, percent);
     Drivetrain.setTurnConstant(0.6);
 
@@ -381,25 +381,25 @@ Controller.Screen.print("V67");
     wait(0.1, sec);
     Drivetrain.driveFor(-1.5,inches);
 
-    Drivetrain.driveFor(0.5,inches);
+    Drivetrain.driveFor(2,inches);
     wait(0.1, sec);
-    Drivetrain.driveFor(-0.5,inches);
+    Drivetrain.driveFor(-2,inches);
 
-    Drivetrain.driveFor(0.5,inches);
+    Drivetrain.driveFor(2,inches);
     wait(0.1, sec);
-    Drivetrain.driveFor(-0.5,inches);
+    Drivetrain.driveFor(-2,inches);
 
-    Drivetrain.driveFor(0.5,inches);
+    Drivetrain.driveFor(2,inches);
     wait(0.1, sec);
-    Drivetrain.driveFor(-0.5,inches);
+    Drivetrain.driveFor(-2,inches);
 
-    Drivetrain.driveFor(0.5,inches);
+    Drivetrain.driveFor(2,inches);
     wait(0.1, sec);
-    Drivetrain.driveFor(-0.5,inches);
+    Drivetrain.driveFor(-2,inches);
 
-    Drivetrain.driveFor(0.5,inches);
+    Drivetrain.driveFor(1.5,inches);
     wait(0.1, sec);
-    Drivetrain.driveFor(-0.5,inches);
+    Drivetrain.driveFor(-1.5,inches);
 
     wait(0.1, sec);
     Drivetrain.driveFor(-6,inches);
@@ -433,11 +433,13 @@ Controller.Screen.print("V67");
 // Next Loader, turns back then long stretch
      // MAJOR EDITs - DEF START
 
-    Drivetrain.driveFor(-4,inches);
+    Drivetrain.driveFor(-9,inches);
 
         Drivetrain.turnToHeading(0, degrees);
 
-     Drivetrain.driveFor(-90,inches);
+     Drivetrain.driveFor(-40,inches);
+        Drivetrain.turnToHeading(0, degrees);
+     Drivetrain.driveFor(-40,inches);
 
         Drivetrain.turnToHeading(-90, degrees);
 
@@ -458,25 +460,25 @@ Controller.Screen.print("V67");
     wait(0.1, sec);
     Drivetrain.driveFor(-1.5,inches);
 
-    Drivetrain.driveFor(0.5,inches);
+    Drivetrain.driveFor(2,inches);
     wait(0.1, sec);
-    Drivetrain.driveFor(-0.5,inches);
+    Drivetrain.driveFor(-2,inches);
 
-    Drivetrain.driveFor(0.5,inches);
+    Drivetrain.driveFor(2,inches);
     wait(0.1, sec);
-    Drivetrain.driveFor(-0.5,inches);
+    Drivetrain.driveFor(-2,inches);
 
-    Drivetrain.driveFor(0.5,inches);
+    Drivetrain.driveFor(2,inches);
     wait(0.1, sec);
-    Drivetrain.driveFor(-0.5,inches);
+    Drivetrain.driveFor(-2,inches);
 
-    Drivetrain.driveFor(0.5,inches);
+    Drivetrain.driveFor(2,inches);
     wait(0.1, sec);
-    Drivetrain.driveFor(-0.5,inches);
+    Drivetrain.driveFor(-2,inches);
 
-    Drivetrain.driveFor(0.5,inches);
+    Drivetrain.driveFor(1.5,inches);
     wait(0.1, sec);
-    Drivetrain.driveFor(-0.5,inches);
+    Drivetrain.driveFor(-1.5,inches);
 
     wait(0.1, sec);
     Drivetrain.driveFor(-6,inches);
@@ -486,8 +488,8 @@ Controller.Screen.print("V67");
     // GO to long Goal  1
     Drivetrain.turnToHeading(87, degrees);
     // Drivetrain.turnToHeading(90, degrees);
-    double value = InertialSensor.heading();
-    std::cout<<"Degrees: "<<value;
+    double val = InertialSensor.heading();
+    std::cout<<"Degrees: "<<val;
         Controller.Screen.print(value);
 
     Drivetrain.driveFor(18,inches);
@@ -542,7 +544,7 @@ void pre_auton(void) {
 
 void autonomous() {
   Drivetrain.setStopping(hold);
-  autonCodes(7);
+  autonCodes(4);
 }
  
 void reverseIntake(){
