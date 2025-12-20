@@ -581,7 +581,9 @@ Controller.Screen.print("V67");
     low.spin(forward);
       storage.spin(reverse);
     wait(2, sec);
-
+   high.stop();
+    storage.stop();
+    low.stop();
     Drivetrain.turnToHeading(87, degrees);
     Drivetrain.driveFor(20,inches);
 
@@ -740,7 +742,7 @@ void pre_auton(void) {
 
 void autonomous() {
   Drivetrain.setStopping(hold);
-  autonCodes(9);
+  autonCodes(8);
 }
  
 void reverseIntake(){
