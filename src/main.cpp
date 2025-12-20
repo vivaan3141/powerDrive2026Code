@@ -553,11 +553,8 @@ Controller.Screen.print("V67");
     Drivetrain.driveFor(-3,inches);
     wait(0.5, sec);
 
-    //     Drivetrain.driveFor(2,inches);
-    //         Drivetrain.driveFor(-6,inches);
-    // wait(0.75, sec);
-    //         Drivetrain.driveFor(6,inches);
-    //         Drivetrain.driveFor(-2,inches);
+    
+     storage.stop();
 
 
    Drivetrain.driveFor(3,inches);
@@ -579,10 +576,11 @@ Controller.Screen.print("V67");
     storage.stop();
 
     // GO to long Goal  1
-    Drivetrain.turnToHeading(0, degrees);
-    high.spin(reverse);
-    low.spin(forward);
-    wait(1, sec);
+    // Drivetrain.turnToHeading(0, degrees);
+    // high.spin(reverse);
+    // low.spin(forward);
+    //   storage.spin(reverse);
+    // wait(1, sec);
 
     Drivetrain.turnToHeading(87, degrees);
     Drivetrain.driveFor(20,inches);
@@ -592,41 +590,12 @@ Controller.Screen.print("V67");
     high.spin(forward);
     storage.spin(reverse);
     low.spin(forward);
-    wait(4, sec);
+    wait(6, sec);
+
     high.stop();
     storage.stop();
     low.stop();
         
-
-
-
-    // high.spin(forward);
-    // low.spin(forward);
-    // storage.spin(reverse);
-    // wait(2, sec);
-    // high.spin(forward);
-    // low.spin(forward);
-    // storage.stop();
-    // wait(0.5, sec);
-
-    //   high.spin(forward);
-    // low.spin(forward);
-    // storage.spin(reverse);
-    // wait(2, sec);
-    // high.spin(forward);
-    // low.spin(forward);
-    // storage.stop();
-    // wait(0.5, sec);
-
-    //   high.spin(forward);
-    // low.spin(forward);
-    // storage.spin(reverse);
-    // wait(2, sec);
-    // high.spin(forward);
-    // low.spin(forward);
-    // storage.stop();
-    // wait(0.5, sec);
-
         
 
 
@@ -655,53 +624,61 @@ high.spin(reverse);
 Loader.set(true);
     storage.spin(forward);
     Drivetrain.setDriveVelocity(10, percent);
-    Drivetrain.driveFor(17,inches);
+    Drivetrain.driveFor(15.75,inches);
 
 //Takes out
     low.spin(forward);
             Drivetrain.turnToHeading(-90, degrees);
-    Drivetrain.driveFor(3,inches);
-    Drivetrain.driveFor(-3,inches);
+    Drivetrain.driveFor(2,inches);
+    Drivetrain.driveFor(-2,inches);
     wait(0.5, sec);
-    Drivetrain.driveFor(3,inches);
-    Drivetrain.driveFor(-3,inches);
+     Drivetrain.driveFor(2,inches);
+    Drivetrain.driveFor(-2,inches);
     wait(0.5, sec);
-    Drivetrain.driveFor(3,inches);
-    Drivetrain.driveFor(-3,inches);
+   Drivetrain.driveFor(2,inches);
+    Drivetrain.driveFor(-2,inches);
     wait(0.5, sec);
-    Drivetrain.driveFor(3,inches);
-    Drivetrain.driveFor(-3,inches);
+   Drivetrain.driveFor(2,inches);
+    Drivetrain.driveFor(-2,inches);
     wait(0.5, sec);
-   Drivetrain.driveFor(3,inches);
-    Drivetrain.driveFor(-3,inches);
+
+     storage.stop();
+
+  Drivetrain.driveFor(2,inches);
+    Drivetrain.driveFor(-2,inches);
     wait(0.5, sec);
-    Drivetrain.driveFor(3,inches);
-    Drivetrain.driveFor(-3,inches);
+   Drivetrain.driveFor(2,inches);
+    Drivetrain.driveFor(-2,inches);
     wait(0.5, sec);
-    Drivetrain.driveFor(3,inches);
-    Drivetrain.driveFor(-3,inches);
+  Drivetrain.driveFor(2,inches);
+    Drivetrain.driveFor(-2,inches);
     wait(0.5, sec);
-    Drivetrain.driveFor(3,inches);
-    Drivetrain.driveFor(-3,inches);
+ Drivetrain.driveFor(2,inches);
+    Drivetrain.driveFor(-2,inches);
     wait(0.5, sec);
-    Drivetrain.driveFor(3,inches);
-    Drivetrain.driveFor(-3,inches);
+  Drivetrain.driveFor(2,inches);
+    Drivetrain.driveFor(-2,inches);
+    wait(0.5, sec);
  
     Drivetrain.setDriveVelocity(20, percent);
 
-Drivetrain.driveFor(-6,inches);
+Drivetrain.driveFor(-4.5,inches);
     Loader.set(false);
     Drivetrain.turnToHeading(-90, degrees);
-     storage.stop();
       low.stop();
 
-Drivetrain.turnToHeading(180, degrees);
-    high.spin(reverse);
-    low.spin(forward);
-    wait(1, sec);
+// Drivetrain.turnToHeading(180, degrees);
+    // high.spin(reverse);
+    // low.spin(forward);
+    //   storage.spin(reverse);
+
+    // wait(1, sec);
 
     // GO to long Goal  1
     Drivetrain.turnToHeading(87, degrees);
+    high.stop();
+    storage.stop();
+    low.stop();
         Drivetrain.setDriveVelocity(15, percent);
 
     Drivetrain.driveFor(20,inches);
@@ -756,7 +733,7 @@ void pre_auton(void) {
 
 void autonomous() {
   Drivetrain.setStopping(hold);
-  autonCodes(7);
+  autonCodes(8);
 }
  
 void reverseIntake(){
