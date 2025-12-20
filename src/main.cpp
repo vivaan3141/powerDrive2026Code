@@ -224,7 +224,7 @@ void autonCodes(int x) {
     Controller.Screen.print("V67");
     /// Long Goal 1
     Loader.set(false);
-    Drivetrain.setDriveVelocity(10, percent);
+    Drivetrain.setDriveVelocity(15, percent);
     low.setVelocity(150, rpm);
     high.setVelocity(200, rpm);
     storage.setVelocity(200, rpm);
@@ -237,6 +237,7 @@ void autonCodes(int x) {
     Drivetrain.setDriveVelocity(15, percent);
     Drivetrain.setTurnVelocity(8, percent);
     Drivetrain.setTurnConstant(0.6);
+    Drivetrain.setDriveVelocity(10, percent);
 
 
     Drivetrain.driveFor(10,inches);
@@ -254,6 +255,7 @@ void autonCodes(int x) {
     Drivetrain.driveFor(0.5,inches);
     wait(0.1, sec);
     Drivetrain.driveFor(-0.5,inches);
+    Drivetrain.setDriveVelocity(15, percent);
 
     wait(0.1, sec);
     Drivetrain.driveFor(-6,inches);
@@ -295,7 +297,7 @@ void autonCodes(int x) {
     Controller.Screen.print("V67");
     /// Long Goal 1
     Loader.set(false);
-    Drivetrain.setDriveVelocity(10, percent);
+    Drivetrain.setDriveVelocity(15, percent);
     low.setVelocity(150, rpm);
     high.setVelocity(200, rpm);
     storage.setVelocity(200, rpm);
@@ -305,7 +307,7 @@ void autonCodes(int x) {
     Drivetrain.turnToHeading(90, degrees);
     // wait(0.75, sec);
     storage.spin(forward);
-    Drivetrain.setDriveVelocity(15, percent);
+    Drivetrain.setDriveVelocity(10, percent);
     Drivetrain.setTurnVelocity(8, percent);
     Drivetrain.setTurnConstant(0.6);
 
@@ -337,6 +339,7 @@ void autonCodes(int x) {
     double value = InertialSensor.heading();
     std::cout<<"Degrees: "<<value;
         Controller.Screen.print(value);
+    Drivetrain.setDriveVelocity(15, percent);
 
     Drivetrain.driveFor(18,inches);
     storage.stop();
@@ -521,7 +524,7 @@ Controller.Screen.print("V67");
     Drivetrain.driveFor(-10,inches);
   }else if (x==8){
     Loader.set(false);
-    Drivetrain.setDriveVelocity(15, percent);
+    Drivetrain.setDriveVelocity(19, percent);
     low.setVelocity(140, rpm);
     high.setVelocity(200, rpm);
     storage.setVelocity(200, rpm);
@@ -632,18 +635,17 @@ Controller.Screen.print("V67");
     Drivetrain.driveFor(-9,inches);
     Drivetrain.turnToHeading(0, degrees);
 
-        Drivetrain.setDriveVelocity(22, percent);
+        Drivetrain.setDriveVelocity(28, percent);
 high.spin(reverse);
     storage.spin(reverse);
     low.spin(forward);
     
     
     Drivetrain.driveFor(-102,inches);
-high.stop();
+    high.stop();
     storage.stop();
     low.stop();
 
-    
     Drivetrain.turnToHeading(0, degrees);
 
     wait(0.3, sec);
@@ -653,7 +655,7 @@ high.stop();
 Loader.set(true);
     storage.spin(forward);
     Drivetrain.setDriveVelocity(10, percent);
-    Drivetrain.driveFor(16.5,inches);
+    Drivetrain.driveFor(17,inches);
 
 //Takes out
     low.spin(forward);
@@ -682,13 +684,10 @@ Loader.set(true);
     Drivetrain.driveFor(3,inches);
     Drivetrain.driveFor(-3,inches);
     wait(0.5, sec);
-
-        Drivetrain.turnToHeading(-90, degrees);
-
-    Drivetrain.driveFor(2,inches);
-    Drivetrain.driveFor(-2,inches);
-    wait(0.3, sec);
+    Drivetrain.driveFor(3,inches);
+    Drivetrain.driveFor(-3,inches);
  
+    Drivetrain.setDriveVelocity(20, percent);
 
 Drivetrain.driveFor(-6,inches);
     Loader.set(false);
@@ -696,13 +695,15 @@ Drivetrain.driveFor(-6,inches);
      storage.stop();
       low.stop();
 
-Drivetrain.turnToHeading(0, degrees);
+Drivetrain.turnToHeading(180, degrees);
     high.spin(reverse);
     low.spin(forward);
     wait(1, sec);
 
     // GO to long Goal  1
     Drivetrain.turnToHeading(87, degrees);
+        Drivetrain.setDriveVelocity(15, percent);
+
     Drivetrain.driveFor(20,inches);
        
     Drivetrain.driveFor(4,inches);
@@ -755,7 +756,7 @@ void pre_auton(void) {
 
 void autonomous() {
   Drivetrain.setStopping(hold);
-  autonCodes(8);
+  autonCodes(7);
 }
  
 void reverseIntake(){
