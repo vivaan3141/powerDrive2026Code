@@ -580,7 +580,7 @@ Controller.Screen.print("V67");
     high.spin(reverse);
     low.spin(forward);
       storage.spin(reverse);
-    wait(2, sec);
+    wait(1, sec);
    high.stop();
     storage.stop();
     low.stop();
@@ -671,13 +671,13 @@ Drivetrain.turnToHeading(180, degrees);
     low.spin(forward);
       storage.spin(reverse);
 
-    wait(2, sec);
-
-    // GO to long Goal  1
-    Drivetrain.turnToHeading(87, degrees);
-    high.stop();
+    wait(1, sec);
+  high.stop();
     storage.stop();
     low.stop();
+    // GO to long Goal  1
+    Drivetrain.turnToHeading(87, degrees);
+  
         Drivetrain.setDriveVelocity(15, percent);
 
     Drivetrain.driveFor(20,inches);
