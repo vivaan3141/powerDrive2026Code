@@ -209,6 +209,7 @@ void autonCodes(int x) {
     storage.stop();
     low.stop();
 
+
     Drivetrain.driveFor(-9,inches);
     Drivetrain.turnToHeading(180, degrees);
     
@@ -372,36 +373,34 @@ Controller.Screen.print("V67");
     Drivetrain.driveFor(10,inches);
 //Takes out
     low.spin(forward);
-    Drivetrain.driveFor(2.5,inches);
-
-    Drivetrain.driveFor(-1.5,inches);
-    wait(0.1, sec);
-    
-    Drivetrain.driveFor(1.5,inches);
-    wait(0.1, sec);
-    Drivetrain.driveFor(-1.5,inches);
-
     Drivetrain.driveFor(2,inches);
-    wait(0.1, sec);
     Drivetrain.driveFor(-2,inches);
-
+    wait(0.1, sec);
     Drivetrain.driveFor(2,inches);
-    wait(0.1, sec);
     Drivetrain.driveFor(-2,inches);
-
+    wait(0.1, sec);
     Drivetrain.driveFor(2,inches);
-    wait(0.1, sec);
     Drivetrain.driveFor(-2,inches);
-
+    wait(0.3, sec);
     Drivetrain.driveFor(2,inches);
-    wait(0.1, sec);
     Drivetrain.driveFor(-2,inches);
+    wait(0.3, sec);
+    Drivetrain.driveFor(2,inches);
+    Drivetrain.driveFor(-2,inches);
+    wait(0.3, sec);
+    Drivetrain.driveFor(2,inches);
+    Drivetrain.driveFor(-2,inches);
+    wait(0.3, sec);
+    Drivetrain.driveFor(2,inches);
+    Drivetrain.driveFor(-2,inches);
+    wait(0.3, sec);
+    Drivetrain.driveFor(2,inches);
+    Drivetrain.driveFor(-2,inches);
+    wait(0.3, sec);
+    Drivetrain.driveFor(2,inches);
+    Drivetrain.driveFor(-2,inches);
+    wait(0.3, sec);
 
-    Drivetrain.driveFor(1.5,inches);
-    wait(0.1, sec);
-    Drivetrain.driveFor(-1.5,inches);
-
-    wait(0.1, sec);
     Drivetrain.driveFor(-6,inches);
     Loader.set(false);
     Drivetrain.setDriveVelocity(20, percent);
@@ -520,6 +519,218 @@ Controller.Screen.print("V67");
     Drivetrain.driveFor(-22,inches);
     wait(1, sec);
     Drivetrain.driveFor(-10,inches);
+  }else if (x==8){
+    Loader.set(false);
+    Drivetrain.setDriveVelocity(15, percent);
+    low.setVelocity(140, rpm);
+    high.setVelocity(200, rpm);
+    storage.setVelocity(200, rpm);
+//A
+    //drivePID(26.5,0.1,0.05,0.1);
+    Drivetrain.driveFor(33,inches);
+    Drivetrain.turnToHeading(-90, degrees);
+    Loader.set(true);
+    wait(1, sec);
+    storage.spin(forward);
+    Drivetrain.setDriveVelocity(10, percent);
+    Drivetrain.driveFor(9,inches);
+//Takes out
+    low.spin(forward);
+
+    Drivetrain.driveFor(3,inches);
+    Drivetrain.driveFor(-3,inches);
+    wait(0.5, sec);
+    Drivetrain.driveFor(3,inches);
+    Drivetrain.driveFor(-3,inches);
+    wait(0.5, sec);
+    Drivetrain.driveFor(3,inches);
+    Drivetrain.driveFor(-3,inches);
+    wait(0.5, sec);
+    Drivetrain.driveFor(3,inches);
+    Drivetrain.driveFor(-3,inches);
+    wait(0.5, sec);
+
+    //     Drivetrain.driveFor(2,inches);
+    //         Drivetrain.driveFor(-6,inches);
+    // wait(0.75, sec);
+    //         Drivetrain.driveFor(6,inches);
+    //         Drivetrain.driveFor(-2,inches);
+
+
+   Drivetrain.driveFor(3,inches);
+    Drivetrain.driveFor(-3,inches);
+    wait(0.5, sec);
+    Drivetrain.driveFor(3,inches);
+    Drivetrain.driveFor(-3,inches);
+    wait(0.5, sec);
+    Drivetrain.driveFor(3,inches);
+    Drivetrain.driveFor(-3,inches);
+    wait(0.5, sec);
+    Drivetrain.driveFor(3,inches);
+    Drivetrain.driveFor(-3,inches);
+    wait(0.5, sec);
+
+//d
+    Drivetrain.driveFor(-6,inches);
+    Loader.set(false);
+    storage.stop();
+
+    // GO to long Goal  1
+    Drivetrain.turnToHeading(0, degrees);
+    high.spin(reverse);
+    low.spin(forward);
+    wait(1, sec);
+
+    Drivetrain.turnToHeading(87, degrees);
+    Drivetrain.driveFor(20,inches);
+
+    
+  //Scores in goal 1
+    high.spin(forward);
+    storage.spin(reverse);
+    low.spin(forward);
+    wait(4, sec);
+    high.stop();
+    storage.stop();
+    low.stop();
+        
+
+
+
+    // high.spin(forward);
+    // low.spin(forward);
+    // storage.spin(reverse);
+    // wait(2, sec);
+    // high.spin(forward);
+    // low.spin(forward);
+    // storage.stop();
+    // wait(0.5, sec);
+
+    //   high.spin(forward);
+    // low.spin(forward);
+    // storage.spin(reverse);
+    // wait(2, sec);
+    // high.spin(forward);
+    // low.spin(forward);
+    // storage.stop();
+    // wait(0.5, sec);
+
+    //   high.spin(forward);
+    // low.spin(forward);
+    // storage.spin(reverse);
+    // wait(2, sec);
+    // high.spin(forward);
+    // low.spin(forward);
+    // storage.stop();
+    // wait(0.5, sec);
+
+        
+
+
+
+
+    Drivetrain.driveFor(-9,inches);
+    Drivetrain.turnToHeading(0, degrees);
+
+        Drivetrain.setDriveVelocity(22, percent);
+high.spin(reverse);
+    storage.spin(reverse);
+    low.spin(forward);
+    
+    
+    Drivetrain.driveFor(-102,inches);
+high.stop();
+    storage.stop();
+    low.stop();
+
+    
+    Drivetrain.turnToHeading(0, degrees);
+
+    wait(0.3, sec);
+    Drivetrain.turnToHeading(-90, degrees);
+
+
+Loader.set(true);
+    storage.spin(forward);
+    Drivetrain.setDriveVelocity(10, percent);
+    Drivetrain.driveFor(16.5,inches);
+
+//Takes out
+    low.spin(forward);
+            Drivetrain.turnToHeading(-90, degrees);
+    Drivetrain.driveFor(3,inches);
+    Drivetrain.driveFor(-3,inches);
+    wait(0.5, sec);
+    Drivetrain.driveFor(3,inches);
+    Drivetrain.driveFor(-3,inches);
+    wait(0.5, sec);
+    Drivetrain.driveFor(3,inches);
+    Drivetrain.driveFor(-3,inches);
+    wait(0.5, sec);
+    Drivetrain.driveFor(3,inches);
+    Drivetrain.driveFor(-3,inches);
+    wait(0.5, sec);
+   Drivetrain.driveFor(3,inches);
+    Drivetrain.driveFor(-3,inches);
+    wait(0.5, sec);
+    Drivetrain.driveFor(3,inches);
+    Drivetrain.driveFor(-3,inches);
+    wait(0.5, sec);
+    Drivetrain.driveFor(3,inches);
+    Drivetrain.driveFor(-3,inches);
+    wait(0.5, sec);
+    Drivetrain.driveFor(3,inches);
+    Drivetrain.driveFor(-3,inches);
+    wait(0.5, sec);
+
+        Drivetrain.turnToHeading(-90, degrees);
+
+    Drivetrain.driveFor(2,inches);
+    Drivetrain.driveFor(-2,inches);
+    wait(0.3, sec);
+ 
+
+Drivetrain.driveFor(-6,inches);
+    Loader.set(false);
+    Drivetrain.turnToHeading(-90, degrees);
+     storage.stop();
+      low.stop();
+
+Drivetrain.turnToHeading(0, degrees);
+    high.spin(reverse);
+    low.spin(forward);
+    wait(1, sec);
+
+    // GO to long Goal  1
+    Drivetrain.turnToHeading(87, degrees);
+    Drivetrain.driveFor(20,inches);
+       
+    Drivetrain.driveFor(4,inches);
+//.
+
+    //.
+  //Scores in goal 1
+    high.spin(forward);
+    storage.spin(reverse);
+    low.spin(forward);
+    Drivetrain.turnToHeading(90, degrees);
+    wait(6, sec);
+    high.stop();
+    storage.stop();
+    low.stop();
+
+
+    Drivetrain.driveFor(-9,inches);
+    Drivetrain.turnToHeading(0, degrees);
+
+    Drivetrain.setDriveVelocity(35, percent);
+
+    Drivetrain.driveFor(52,inches);
+    Drivetrain.setDriveVelocity(40, percent);
+    Drivetrain.turnToHeading(90, degrees);
+    Drivetrain.driveFor(-22,inches);
+    wait(1, sec);
+    Drivetrain.driveFor(-10,inches);  
   }
 }
 
@@ -544,7 +755,7 @@ void pre_auton(void) {
 
 void autonomous() {
   Drivetrain.setStopping(hold);
-  autonCodes(4);
+  autonCodes(8);
 }
  
 void reverseIntake(){
