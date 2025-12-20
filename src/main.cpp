@@ -707,7 +707,9 @@ Drivetrain.turnToHeading(180, degrees);
     wait(1, sec);
     Drivetrain.driveFor(-10,inches);  
   }else if(x==9){
+    Drivetrain.setDriveVelocity(10, percent);
     Drivetrain.driveFor(5,inches);
+    Drivetrain.setDriveVelocity(20, percent);
     wait(1, sec);
     Drivetrain.driveFor(-22,inches);
     wait(1, sec);
