@@ -8,10 +8,12 @@
 #include "functions.h"
 #include <iostream>
 #include <string>
+#include <cmath>
+#include <iomanip>
 
 using namespace vex;
-
 competition Competition;
+
 bool stateLoader=false;
 bool stateDescore=false;
 
@@ -19,14 +21,29 @@ double distance(){
   return gap.objectDistance(inches);
 }
 
-void driveUntilGap(double distance) {
-  double finalGap=(gap.objectDistance(inches))-(distance);
-  while (finalGap!=distance){
-    Drivetrain.drive(forward);
-    finalGap=gap.objectDistance(inches)-(distance);
+void driveUntilTarget(double distance, double speed) {
+  double targetDistRaw=(gap.objectDistance(inches))-(distance); // this gives the og target 
+  double targetDist = std::round(targetDistRaw * 10.0) / 10.0; // this supposed to round so there no oscillation
+  double driveSpeed=speed; // for reducing speed??
+
+  while (targetDist!=distance){ // this logic supposed to make it go to accurate number
+    // driveSpeed=driveSpeed-1;
+    // Drivetrain.setDriveVelocity(driveSpeed, percent); 
+    // THIS LOGIC-  supposed to reduce speed when its close, not done, so im not doing it yet
+
+    if (targetDist>distance){
+      Drivetrain.drive(forward);
+      targetDist=gap.objectDistance(inches)-(distance);
+  }else if(targetDist<distance){
+      Drivetrain.drive(reverse);
+      targetDist=gap.objectDistance(inches)-(distance);
+    }
   }
   Drivetrain.stop();
 }
+
+
+
 
 // enum Direction {
 //   left,
@@ -923,10 +940,10 @@ void usercontrol(void) {
 
     spinLeftDT(leftPower * 0.7);
     spinRightDT(rightPower * 0.7);
-
   
     wait(20, msec);
   }
+
 }
 int main(){
   pre_auton();
