@@ -25,6 +25,7 @@ void driveUntilTarget(double distance, double speed) {
   double targetDistRaw=(gap.objectDistance(inches))-(distance); // this gives the og target 
   double targetDist = std::round(targetDistRaw * 10.0) / 10.0; // this supposed to round so there no oscillation
   double driveSpeed=speed; // for reducing speed??
+  Drivetrain.setDriveVelocity(speed, percent);
 
   while (targetDist!=distance){ // this logic supposed to make it go to accurate number
     // driveSpeed=driveSpeed-1;
