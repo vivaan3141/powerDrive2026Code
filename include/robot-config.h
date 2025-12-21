@@ -30,6 +30,10 @@ extern vex::motor storage;
 
 extern vex::inertial InertialSensor;
 
+
+extern vex::distance gap;
+
+
 extern vex::digital_out Loader;
 
 extern vex::digital_out Descore;

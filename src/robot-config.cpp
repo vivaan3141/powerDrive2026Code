@@ -31,6 +31,10 @@ vex::digital_out Loader (Brain.ThreeWirePort.A);
 
 vex::digital_out Descore (Brain.ThreeWirePort.G);
 
+distance gap = distance(PORT2); // Change the port!
+
+
+
 void vexcodeInit() {
   InertialSensor.calibrate();
   // DoubleActingPiston.set(false); // retracted

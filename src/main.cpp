@@ -15,6 +15,19 @@ competition Competition;
 bool stateLoader=false;
 bool stateDescore=false;
 
+double distance(){
+  return gap.objectDistance(inches);
+}
+
+void driveUntilGap(double distance) {
+  double finalGap=(gap.objectDistance(inches))-(distance);
+  while (finalGap!=distance){
+    Drivetrain.drive(forward);
+    finalGap=gap.objectDistance(inches)-(distance);
+  }
+  Drivetrain.stop();
+}
+
 // enum Direction {
 //   left,
 //   right
