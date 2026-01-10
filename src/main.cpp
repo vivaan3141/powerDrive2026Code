@@ -2,6 +2,8 @@
 /*    Author:       Vivaan Gupta                           */
 /*    Created:      5/27/2025, 10:30:19 PM                 */
 
+
+// January 10. Autonomous change for Jan 10
 #include "vex.h"
 #include "robot-config.h"
 #include "PID.h"
@@ -13,6 +15,7 @@
 
 using namespace vex;
 competition Competition;
+int x=0;
 
 bool stateLoader=false;
 bool stateDescore=false;
