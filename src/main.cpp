@@ -365,7 +365,6 @@ int main(){
   pre_auton();
   Competition.autonomous(autonomous);
   Competition.drivercontrol(usercontrol);
-
   while (true) {
     wait(100, msec);
   }
