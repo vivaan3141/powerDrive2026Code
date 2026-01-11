@@ -1,10 +1,7 @@
 /*    Module:       main.cpp                               */
 /*    Author:       Vivaan Gupta                           */
 /*    Created:      5/27/2025, 10:30:19 PM                 */
-
-
 // January 10. Autonomous change for Jan 10
-
 #include "vex.h"
 #include "robot-config.h"
 #include "PID.h"
@@ -17,7 +14,6 @@
 using namespace vex;
 competition Competition;
 
-int x=0;
 
 bool stateLoader=false;
 bool stateDescore=false;
@@ -70,22 +66,6 @@ double targetDistRaw=gap.objectDistance(inches); // this gives the og target
   Drivetrain.stop();
   }
 
-
-
-
-// enum Direction {
-//   left,
-//   right
-// };
-
-// void turn(int deg, Direction dir){
-//   if (dir == left){
-//     Drivetrain.turnToHeading(deg,degrees);
-//   }else if (dir == right){
-//     Drivetrain.turnToHeading((0-deg),degrees);
-//   }
-// }
-
 void turn(int deg, std::string dir){
   if (dir == "left" or "l"){
     Drivetrain.turnToHeading(deg,degrees);
@@ -108,7 +88,6 @@ void loadLoop(int loop, double dist, double time){
     wait(time, sec);
     Drivetrain.driveFor((0-dist),inches);
   }
-
 }
 
 
@@ -195,31 +174,21 @@ void autonomous() {
 void reverseIntake(){
   low.spin(reverse);
   high.spin(reverse);
-Controller.Screen.clearLine();
-
 }
 
-void intakeStorage(){
-  Controller.Screen.print("Placing in storage"); 
-  low.spin(forward);
-  storage.spin(forward);
-  Controller.Screen.clearLine();
-
-}
-
-void storageOut(){
-  Controller.Screen.clearLine();
-  Controller.Screen.print("Taking out of storage"); 
-  storage.spin(reverse);
-  
-}
 void middleGoal(){
-  Controller.Screen.clearLine();
-
   low.spin(forward);
   high.spin(reverse);
   Controller.Screen.print("Middle Goal");
 }
+
+void intake(){
+  low.spin(forward);
+  Controller.Screen.print("Intake");
+}
+
+
+
 void longGoal(){
   Controller.Screen.clearLine();
 
@@ -237,7 +206,6 @@ void loadOut(){
 
 void loadRest(){
   Controller.Screen.clearLine();
-
   Loader.set(false);
 }
 
@@ -259,19 +227,8 @@ void reverseIntakeRELEASED(){
   high.stop();
 }
 
-void intakeStorageRELEASED(){ 
-  Controller.Screen.clearLine();
 
-  low.stop();
-  storage.stop();
-  high.stop();        
-}
 
-void storageOutRELEASED(){
-  Controller.Screen.clearLine();
-
-  storage.stop();
-}
 void middleGoalRELEASED(){
   Controller.Screen.clearLine();
   low.stop();
@@ -284,6 +241,15 @@ void longGoalRELEASED(){
   high.stop();
   low.stop();
 }
+
+void intakeRELEASED(){
+  Controller.Screen.clearLine();
+
+  high.stop();
+  low.stop();
+}
+
+
 void load(){
   if (stateLoader==true){
     loadOut();
@@ -310,9 +276,7 @@ void descoreTest(){
     Descore.set(false);
 
 }
-void tempStore(){
-    Controller.Screen.print(storage.temperature(celsius)); 
-}
+
 
 
 
@@ -326,18 +290,19 @@ void usercontrol(void) {
   storage.setVelocity(200, rpm);
 
   Controller.ButtonA.pressed(reverseIntake);
-  Controller.ButtonL1.pressed(intakeStorage);
-  Controller.ButtonL2.pressed(storageOut);
-  Controller.ButtonR1.pressed(middleGoal);
-  Controller.ButtonR2.pressed(longGoal);
-    
   Controller.ButtonA.released(reverseIntakeRELEASED);
-  Controller.ButtonL1.released(intakeStorageRELEASED);
-  Controller.ButtonL2.released(storageOutRELEASED);
-  
+
+  Controller.ButtonR1.pressed(middleGoal);
   Controller.ButtonR1.released(middleGoalRELEASED);
+
+  Controller.ButtonR2.pressed(longGoal);
   Controller.ButtonR2.released(longGoalRELEASED);
-  Controller.ButtonY.released(tempStore);
+
+  Controller.ButtonL1.pressed(intake);
+  Controller.ButtonL1.released(intakeRELEASED);
+
+
+
 
   // Pneumatics
   Controller.ButtonUp.pressed(load);

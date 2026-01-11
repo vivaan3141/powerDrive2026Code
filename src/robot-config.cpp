@@ -1,9 +1,9 @@
 // src/robot-config.cpp
 #include "robot-config.h"
-using namespace vex;
 #include <iostream>
+using namespace vex;
 
-//Configuration for ports
+//Config for ports of all devices
 
 vex::brain Brain;
 vex::controller Controller(vex::controllerType::primary);
@@ -32,7 +32,6 @@ vex::digital_out Loader (Brain.ThreeWirePort.A);
 vex::digital_out Descore (Brain.ThreeWirePort.G);
 
 distance gap = distance(PORT2); // Change the port!
-
 
 
 void vexcodeInit() {

@@ -8,7 +8,6 @@ double inchesToDegrees(double inches) {
  //NOTE: 5/3 is the gear ratio, adjust as needed
 }
 
-
 void setDTPosition(double inches) {
     double deg = inchesToDegrees(inches);
     LF.setPosition(deg, degrees);
@@ -28,7 +27,6 @@ void stopDT() {
     RB.stop();
 }
 
-
 void spinRightDT(double velocity) {
     RF.spin(forward, velocity, percent);
     RM.spin(forward, velocity, percent);
@@ -46,8 +44,6 @@ void spinDT(double velocity) {
     spinLeftDT(velocity);
 }
 
-
-
 void spinDTPosition(double velocity, double targetInches) {
 
     setDTPosition(0);
@@ -60,10 +56,7 @@ void spinDTPosition(double velocity, double targetInches) {
     RF.spinToPosition(targetDegrees, degrees, velocity, rpm, false);
     RM.spinToPosition(targetDegrees, degrees, velocity, rpm, false);
     RB.spinToPosition(targetDegrees, degrees, velocity, rpm, true);
-
 }
-
-
 
 void turnForTime(double velocity, double time) {
     spinRightDT(-velocity);
@@ -71,31 +64,3 @@ void turnForTime(double velocity, double time) {
     wait(time, msec);
     stopDT();
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*spinRightDT(-velocity);
-    spinLeftDT(velocity);
-    wait(time, msec);
-    stopDT();*/
